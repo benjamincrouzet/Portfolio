@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Benjamin Crouzet — Accueil</title>
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    /* ── Styles spécifiques à la page accueil ── */
+
+    #accueil {
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding-top: 9rem;
+    }
+
+    .hero-label {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .hero-label::before {
+      content: '';
+      width: 2rem;
+      height: 1px;
+      background: var(--accent);
+      display: inline-block;
+    }
+
+    h1 {
+      font-family: var(--display);
+      font-size: clamp(3rem, 7vw, 6rem);
+      font-weight: 800;
+      line-height: 1.05;
+      letter-spacing: -0.02em;
+      color: #ffffff;
+      margin-bottom: 0.3rem;
+    }
+
+    .hero-sub {
+      font-family: var(--display);
+      font-size: clamp(1.5rem, 3vw, 2.5rem);
+      font-weight: 400;
+      color: var(--muted);
+      margin-bottom: 2rem;
+    }
+
+    .hero-sub span { color: var(--accent); font-weight: 600; }
+
+    .hero-bio {
+      max-width: 600px;
+      font-size: 1.05rem;
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 2.5rem;
+    }
+
+    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
+
+    /* ── Timeline parcours ── */
+    .xp-block {
+      display: flex;
+      gap: 2rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--border);
+      align-items: flex-start;
+    }
+
+    .xp-block:last-child { border-bottom: none; }
+
+    .xp-date {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--accent);
+      min-width: 100px;
+      padding-top: 0.3rem;
+      letter-spacing: 0.05em;
+    }
+
+    .xp-content h3 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.25rem;
+    }
+
+    .xp-org {
+      font-size: 0.85rem;
+      color: var(--accent);
+      margin-bottom: 0.5rem;
+    }
+
+    .xp-content p {
+      font-size: 0.875rem;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    @media (max-width: 700px) {
+      .xp-block { flex-direction: column; gap: 0.5rem; }
+      .xp-date { min-width: auto; }
+    }
+  </style>
+</head>
+<body>
+
+<nav>
+  <a href="index.html" class="nav-logo">bc://portfolio</a>
+  <ul class="nav-links">
+    <li><a href="index.html">accueil</a></li>
+    <li><a href="projets.html">projets</a></li>
+    <li><a href="contact.html">contact</a></li>
+  </ul>
+</nav>
+
+<!-- ──────────── HERO ──────────── -->
+<section id="accueil" class="page">
+  <div class="hero-label">Alternant disponible · Île-de-France</div>
+  <h1>Benjamin<br>Crouzet</h1>
+  <p class="hero-sub">Systèmes &amp; <span>Réseau</span></p>
+  <p class="hero-bio">
+    Étudiant en Bachelor CPI RES, titulaire d'un BTS SIO SLAM. 3 ans d'alternance
+    en environnement de santé — support N1/N2, administration Windows, infrastructure réseau.
+    En recherche d'une entreprise pour continuer ma montée vers l'administration système.
+  </p>
+
+  <!-- ── BADGES COMPÉTENCES ──
+       Pour ajouter une compétence : copier une ligne <span class="tag"> et changer le texte.
+       Classe "accent" = mise en avant en vert, sans "accent" = discret.
+  ── -->
+  <div class="tags">
+    <span class="tag accent">Windows Server</span>
+    <span class="tag accent">Linux</span>
+    <span class="tag accent">pfSense</span>
+    <span class="tag">Active Directory</span>
+    <span class="tag">DHCP</span>
+    <span class="tag">Support N1/N2</span>
+    <span class="tag">Documentation</span>
+    <span class="tag">GNS3</span>
+  </div>
+
+  <div class="hero-cta">
+    <a href="contact.html" class="btn btn-primary">Me contacter</a>
+    <a href="projets.html" class="btn btn-ghost">Voir les projets</a>
+  </div>
+</section>
+
+<!-- ──────────── PARCOURS ──────────── -->
+<section class="page" style="padding-top: 0;">
+  <div class="section-header reveal">
+    <span class="section-num">01</span>
+    <h2>Parcours</h2>
+  </div>
+
+  <!-- ── EXPÉRIENCES ──
+       Pour ajouter une expérience : copier un bloc .xp-block complet et modifier le contenu.
+       Ordre conseillé : du plus récent au plus ancien (top → bas).
+  ── -->
+
+  <div class="xp-block reveal">
+    <div class="xp-date">2023 — En cours</div>
+    <div class="xp-content">
+      <h3>Alternant informatique</h3>
+      <div class="xp-org">Pôle de santé du plateau · Clinique de Meudon</div>
+      <p>Support informatique N1 et N2, assistance utilisateurs, gestion et maintenance des postes Windows.
+      Suivi et documentation des interventions techniques.</p>
+    </div>
+  </div>
+
+  <div class="xp-block reveal">
+    <div class="xp-date">2025 —</div>
+    <div class="xp-content">
+      <h3>Bachelor CPI RES</h3>
+      <div class="xp-org">H3 Hitema</div>
+      <p>Spécialisation réseaux, systèmes et exploitation. Administration infrastructure,
+      cloud hybride, virtualisation, centralisation de la gestion.</p>
+    </div>
+  </div>
+
+  <div class="xp-block reveal">
+    <div class="xp-date">2023 — 2025</div>
+    <div class="xp-content">
+      <h3>BTS SIO option SLAM — diplôme obtenu</h3>
+      <div class="xp-org">H3 Hitema</div>
+      <p>Formation en solutions logicielles et applications métiers. Bases réseau, développement, sécurité.
+      Alternance en parallèle sur toute la durée du BTS.</p>
+    </div>
+  </div>
+
+  <div class="xp-block reveal">
+    <div class="xp-date">2020 — 2023</div>
+    <div class="xp-content">
+      <h3>Baccalauréat STI2D — diplôme obtenu</h3>
+      <div class="xp-org">Lycée Jean Jaurès</div>
+      <p>Sciences et technologies de l'industrie et du développement durable. Spécialité SIN.</p>
+    </div>
+  </div>
+
+</section>
+
+<footer>
+  &copy; 2025 Benjamin Crouzet &nbsp;·&nbsp; Alternant Systèmes &amp; Réseau
+</footer>
+
+<script src="script.js"></script>
+</body>
+</html>
