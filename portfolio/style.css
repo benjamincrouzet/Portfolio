@@ -65,8 +65,9 @@ nav {
 }
 
 img {
-    width: 300px;  /* Largeur fixe */
-    height: auto;   /* Garde les proportions pour ne pas déformer l'image */
+    width: 50px;  /* C'est environ la taille d'une icône de profil */
+    height: auto;
+    border-radius: 5px; /* Optionnel : pour arrondir un peu les angles */
 }
 
 /* OU pour cibler une image spécifique avec une classe */
