@@ -70,12 +70,6 @@ img {
     border-radius: 5px; /* Optionnel : pour arrondir un peu les angles */
 }
 
-/* OU pour cibler une image spécifique avec une classe */
-.logo {
-    width: 50%;    /* Prend la moitié de la largeur de l'écran */
-    max-width: 400px; /* Ne dépassera jamais 400px même sur grand écran */
-}
-
 .nav-links {
   display: flex;
   gap: 2.5rem;
