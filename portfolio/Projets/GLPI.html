@@ -5,6 +5,159 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — GLPI</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+    }
+
+    /* ── Blocs de section ── */
+    .section-block { margin-bottom: 4rem; }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ── Bloc de code terminal ── */
+    .code-block {
+      background: #020408;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.5rem 1.75rem;
+      margin-top: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      line-height: 1.9;
+      color: #c9d1d9;
+      margin: 0;
+      white-space: pre;
+    }
+
+    .code-block .comment { color: #555f6e; }
+    .code-block .cmd     { color: var(--accent); }
+    .code-block .param   { color: #79c0ff; }
+    .code-block .string  { color: #a5d6ff; }
+
+    .code-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    /* ── Screenshots ── */
+    .screenshot-block {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .screenshot-block img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-caption {
+      padding: 0.85rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .screenshot-caption::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    /* ── Infra cards ── */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .infra-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.1rem 1.4rem;
+    }
+
+    .infra-card .ic-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.35rem;
+    }
+
+    .infra-card .ic-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .infra-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    @media (max-width: 750px) {
+      .screenshots-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,45 +172,275 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
     <h2>GLPI</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Administration · Support</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">GLPI</span>
-    <span class="tag accent">Linux</span>
+    <span class="tag accent">GLPI 10</span>
+    <span class="tag accent">Debian</span>
     <span class="tag accent">Apache</span>
-    <span class="tag accent">MySQL</span>
+    <span class="tag accent">MariaDB</span>
+    <span class="tag accent">PHP</span>
+    <span class="tag">GLPI Inventory</span>
+    <span class="tag">GPO</span>
+    <span class="tag">Gestion de parc</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Installation et configuration d'un serveur GLPI pour la gestion des tickets et inventaire du parc informatique.</p>
+  <p class="project-intro reveal">
+    Installation et configuration d'un serveur GLPI sur Debian, dans le même lab que le projet AD/DHCP.
+    Le serveur GLPI est hébergé en <code style="color:var(--accent);font-family:var(--mono)">192.168.100.20</code>,
+    avec Apache, MariaDB et PHP. Le plugin GLPI Inventory est installé pour centraliser
+    l'inventaire automatique des postes du domaine, dont le client Windows 10 déployé via GPO.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
-
-    <h3>Objectifs</h3>
-    <p>...</p>
-
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+  <!-- ── INFRA ── -->
+  <div class="section-block reveal">
+    <div class="block-label">Infrastructure</div>
+    <h3>Serveur GLPI</h3>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="ic-label">Serveur GLPI</div>
+        <div class="ic-value">192.168.100.20</div>
+        <p>Debian · Apache · MariaDB</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Version GLPI</div>
+        <div class="ic-value">GLPI 10.x</div>
+        <p>Interface web sur port 80</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Plugin</div>
+        <div class="ic-value">GLPI Inventory 1.5.7</div>
+        <p>Teclib' · AGPLv3+</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Agent client</div>
+        <div class="ic-value">GLPI Agent 1.16</div>
+        <p>Déployé via GPO sur lab_rad_win10</p>
+      </div>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ══════════════════════════════════════════
+       INSTALLATION GLPI SUR DEBIAN
+  ══════════════════════════════════════════ -->
+  <div class="section-block reveal">
+    <div class="block-label">Installation · Debian</div>
+    <h3>Mise en place du serveur</h3>
+    <p>Installation complète de la stack Apache + MariaDB + PHP, puis déploiement de GLPI
+    via l'archive officielle. Les commandes suivantes sont exécutées en root ou avec sudo.</p>
+
+    <!-- ÉTAPE 1 -->
+    <div class="code-label" style="margin-top:1.75rem;">1 — Mise à jour et dépendances</div>
+    <div class="code-block">
+      <pre><span class="comment"># Mise à jour du système</span>
+<span class="cmd">apt update</span> && <span class="cmd">apt upgrade</span> <span class="param">-y</span>
+
+<span class="comment"># Installation Apache, MariaDB, PHP et extensions requises par GLPI</span>
+<span class="cmd">apt install</span> <span class="param">-y</span> apache2 mariadb-server \
+  php php-mysql php-curl php-gd php-intl php-ldap \
+  php-apcu php-xmlrpc php-xml php-mbstring php-cas \
+  php-zip php-bz2 php-imap php-opcache</pre>
+    </div>
+
+    <!-- ÉTAPE 2 -->
+    <div class="code-label" style="margin-top:1.5rem;">2 — Base de données MariaDB</div>
+    <div class="code-block">
+      <pre><span class="comment"># Sécurisation de MariaDB</span>
+<span class="cmd">mysql_secure_installation</span>
+
+<span class="comment"># Connexion et création de la base GLPI</span>
+<span class="cmd">mysql</span> <span class="param">-u</span> root <span class="param">-p</span>
+
+<span class="comment">-- Dans le shell MySQL :</span>
+<span class="cmd">CREATE DATABASE</span> <span class="string">glpi</span> CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+<span class="cmd">CREATE USER</span> <span class="string">'glpi'</span>@<span class="string">'localhost'</span> IDENTIFIED BY <span class="string">'MotDePasseGLPI'</span>;
+<span class="cmd">GRANT ALL PRIVILEGES ON</span> <span class="string">glpi</span>.* <span class="cmd">TO</span> <span class="string">'glpi'</span>@<span class="string">'localhost'</span>;
+<span class="cmd">FLUSH PRIVILEGES;</span>
+<span class="cmd">EXIT;</span></pre>
+    </div>
+
+    <!-- ÉTAPE 3 -->
+    <div class="code-label" style="margin-top:1.5rem;">3 — Téléchargement et déploiement de GLPI</div>
+    <div class="code-block">
+      <pre><span class="comment"># Télécharger l'archive GLPI depuis GitHub</span>
+<span class="cmd">wget</span> https://github.com/glpi-project/glpi/releases/download/10.0.17/glpi-10.0.17.tgz
+
+<span class="comment"># Extraire dans le répertoire web</span>
+<span class="cmd">tar</span> <span class="param">-xzf</span> glpi-10.0.17.tgz <span class="param">-C</span> /var/www/html/
+
+<span class="comment"># Droits Apache</span>
+<span class="cmd">chown</span> <span class="param">-R</span> www-data:www-data /var/www/html/glpi
+<span class="cmd">chmod</span> <span class="param">-R</span> 755 /var/www/html/glpi</pre>
+    </div>
+
+    <!-- ÉTAPE 4 -->
+    <div class="code-label" style="margin-top:1.5rem;">4 — VirtualHost Apache</div>
+    <div class="code-block">
+      <pre><span class="comment"># Créer le VirtualHost</span>
+<span class="cmd">nano</span> /etc/apache2/sites-available/glpi.conf</pre>
+    </div>
+    <div class="code-block" style="margin-top:0.5rem;">
+      <pre><span class="comment"># Contenu du VirtualHost :</span>
+&lt;VirtualHost *:80&gt;
+    ServerName <span class="string">192.168.100.20</span>
+    DocumentRoot <span class="string">/var/www/html/glpi/public</span>
+
+    &lt;Directory /var/www/html/glpi/public&gt;
+        AllowOverride All
+        RewriteEngine On
+    &lt;/Directory&gt;
+&lt;/VirtualHost&gt;</pre>
+    </div>
+    <div class="code-block" style="margin-top:0.5rem;">
+      <pre><span class="comment"># Activer le site et les modules Apache</span>
+<span class="cmd">a2ensite</span> glpi.conf
+<span class="cmd">a2enmod</span> rewrite
+<span class="cmd">systemctl restart</span> apache2</pre>
+    </div>
+
+    <!-- ÉTAPE 5 -->
+    <div class="code-label" style="margin-top:1.5rem;">5 — Finalisation via l'interface web</div>
+    <div class="code-block">
+      <pre><span class="comment"># L'installation se termine dans le navigateur :</span>
+<span class="comment"># → http://192.168.100.20/glpi</span>
+<span class="comment"># Renseigner : hôte DB = localhost, utilisateur = glpi, base = glpi</span>
+
+<span class="comment"># Supprimer le dossier install après configuration (bonne pratique)</span>
+<span class="cmd">rm</span> <span class="param">-rf</span> /var/www/html/glpi/install</pre>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       INTERFACE GLPI
+  ══════════════════════════════════════════ -->
+  <div class="section-block reveal">
+    <div class="block-label">Interface</div>
+    <h3>Connexion et tableau de bord</h3>
+    <p>GLPI est accessible via navigateur sur
+    <code style="color:var(--accent);font-family:var(--mono)">http://192.168.100.20/glpi</code>.
+    Connexion avec le compte Super-Admin via la base interne GLPI.
+    Le tableau de bord centralise les équipements du parc, les tickets et les statistiques.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_login.png -->
+        <img src="../Assets/GLPI/glpi_login.png" alt="Page de connexion GLPI — http://192.168.100.20/glpi/index.php">
+        <div class="screenshot-caption">Page de connexion GLPI · 192.168.100.20</div>
+      </div>
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_dashboard.png -->
+        <img src="../Assets/GLPI/glpi_dashboard.png" alt="Tableau de bord GLPI — Vue Super-Admin avec tuiles parc et tickets">
+        <div class="screenshot-caption">Tableau de bord — connecté en Super-Admin</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       PLUGIN GLPI INVENTORY
+  ══════════════════════════════════════════ -->
+  <div class="section-block reveal">
+    <div class="block-label">Plugin · GLPI Inventory</div>
+    <h3>Installation du plugin d'inventaire</h3>
+    <p>Le plugin <strong style="color:var(--text)">GLPI Inventory</strong> (Teclib') est récupéré
+    depuis le catalogue officiel ou GitHub, puis activé dans GLPI.
+    Il expose une API que l'agent installé sur les clients utilise pour remonter l'inventaire matériel et logiciel.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_plugins_site.png -->
+        <img src="../Assets/GLPI/glpi_plugins_site.png" alt="plugins.glpi-project.org — GLPI Inventory en tendance">
+        <div class="screenshot-caption">plugins.glpi-project.org — GLPI Inventory en tête des tendances</div>
+      </div>
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_inventory_plugin.png -->
+        <img src="../Assets/GLPI/glpi_inventory_plugin.png" alt="Fiche plugin GLPI Inventory — Teclib', compatibilité 10.x et 11.x">
+        <div class="screenshot-caption">Plugin GLPI Inventory · Teclib' · compatible GLPI 10 et 11</div>
+      </div>
+    </div>
+
+    <div class="screenshot-block" style="margin-top:1rem;">
+      <!-- Assets/GLPI/glpi_inventory_github.png -->
+      <img src="../Assets/GLPI/glpi_inventory_github.png" alt="GitHub — glpi-inventory-plugin release 1.6.7">
+      <div class="screenshot-caption">GitHub · glpi-project/glpi-inventory-plugin · release 1.6.7 (latest)</div>
+    </div>
+
+    <div class="screenshot-block" style="margin-top:1rem;">
+      <!-- Assets/GLPI/glpi_plugin_active.png -->
+      <img src="../Assets/GLPI/glpi_plugin_active.png" alt="GLPI Configuration > Plugins — GLPI Inventory 1.5.7 activé">
+      <div class="screenshot-caption">Configuration &gt; Plugins — GLPI Inventory 1.5.7 · Statut : Activé</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       CONFIGURATION DU PLUGIN
+  ══════════════════════════════════════════ -->
+  <div class="section-block reveal">
+    <div class="block-label">Configuration</div>
+    <h3>Paramétrage de GLPI Inventory</h3>
+    <p>La configuration générale du plugin définit le port d'écoute de l'agent
+    (<code style="color:var(--accent);font-family:var(--mono)">62354</code>), la rétention des logs
+    (20 jours) et les modules actifs. L'inventaire des ordinateurs est activé par défaut ;
+    l'inventaire distant des hôtes VMware est désactivé dans ce lab.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_inventory_config.png -->
+        <img src="../Assets/GLPI/glpi_inventory_config.png" alt="GLPI Inventory — Configuration générale : port 62354, logs 20 jours">
+        <div class="screenshot-caption">Configuration générale — port agent 62354 · logs conservés 20 jours</div>
+      </div>
+      <div class="screenshot-block">
+        <!-- Assets/GLPI/glpi_inventory_modules.png -->
+        <img src="../Assets/GLPI/glpi_inventory_modules.png" alt="GLPI Inventory — Modules des agents : inventaire ordinateur activé">
+        <div class="screenshot-caption">Modules des agents — Inventaire ordinateur ✓ · Inventaire VMware ✗</div>
+      </div>
+    </div>
+
+    <div class="screenshot-block" style="margin-top:1rem;">
+      <!-- Assets/GLPI/glpi_inventaire_config.png -->
+      <img src="../Assets/GLPI/glpi_inventaire_config.png" alt="Administration > Inventaire — options d'importation, composants, virtualisation, fréquence 24h">
+      <div class="screenshot-caption">
+        Administration &gt; Inventaire — fréquence 24h · importation composants, logiciels, moniteurs, antivirus…
+      </div>
+    </div>
+
+    <div class="screenshot-block" style="margin-top:1rem;">
+      <!-- Assets/GLPI/glpi_inventory_dashboard.png -->
+      <img src="../Assets/GLPI/glpi_inventory_dashboard.png" alt="GLPI Inventory — Tableau de bord du plugin">
+      <div class="screenshot-caption">Tableau de bord GLPI Inventory — vue globale agents, tâches, équipements inventoriés</div>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════
+       AGENT & RÉSULTAT
+  ══════════════════════════════════════════ -->
+  <div class="section-block reveal">
+    <div class="block-label">Agent · Résultat</div>
+    <h3>Inventaire du poste Windows 10</h3>
+    <p>L'agent GLPI 1.16, déployé via GPO sur <strong style="color:var(--text)">lab_rad_win10</strong>,
+    remonte automatiquement l'inventaire vers le serveur.
+    Le poste apparaît dans <em>Parc &gt; Ordinateurs</em> avec ses caractéristiques complètes :
+    fabricant VMware, OS Windows 10 Professionnel, processeur AMD Ryzen AI 9 365w.</p>
+
+    <div class="screenshot-block">
+      <!-- Assets/GLPI/glpi_agent_setup.png -->
+      <img src="../Assets/GLPI/glpi_agent_setup.png" alt="GLPI Agent 1.16 Target Setup — configuration de la cible remote">
+      <div class="screenshot-caption">GLPI Agent 1.16 · configuration de la cible : Remote Targets → http://192.168.100.20/glpi</div>
+    </div>
+
+    <div class="screenshot-block" style="margin-top:1rem;">
+      <!-- Assets/GLPI/glpi_computer_inventoried.png -->
+      <img src="../Assets/GLPI/glpi_computer_inventoried.png" alt="Parc > Ordinateurs — lab_rad_win10 inventorié via GLPI Native Inventory">
+      <div class="screenshot-caption">
+        Parc &gt; Ordinateurs — lab_rad_win10 · Windows 10 Pro · AMD Ryzen AI 9 365w · source : GLPI Native Inventory · 06/03/2026
+      </div>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 
