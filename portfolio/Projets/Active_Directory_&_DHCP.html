@@ -5,6 +5,131 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — Active Directory & DHCP</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ── Styles spécifiques à cette page projet ── */
+
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+    }
+
+    /* ── Sections de contenu ── */
+    .section-block {
+      margin-bottom: 4rem;
+    }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-block .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ── Bloc screenshot ── */
+    .screenshot-block {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .screenshot-block img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-caption {
+      padding: 0.85rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .screenshot-caption::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── Réseau infra ── */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .infra-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .infra-card .ic-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .infra-card .ic-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .infra-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      margin-top: 0.25rem;
+    }
+
+    /* ── Deux screenshots côte à côte ── */
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 750px) {
+      .screenshots-row { grid-template-columns: 1fr; }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,45 +144,179 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
     <h2>Active Directory &amp; DHCP</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Administration système</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">Windows Server</span>
-    <span class="tag accent">AD DS</span>
+    <span class="tag accent">Windows Server 2022</span>
+    <span class="tag accent">Active Directory</span>
     <span class="tag accent">DHCP</span>
     <span class="tag accent">GPO</span>
+    <span class="tag">GLPI Agent</span>
+    <span class="tag">DNS</span>
+    <span class="tag">VMware</span>
+    <span class="tag">lab.local</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Déploiement d'un domaine Active Directory avec gestion des utilisateurs, groupes et GPO. Service DHCP associé sur Windows Server en environnement lab.</p>
+  <p class="project-intro reveal">
+    Lab complet en environnement virtualisé VMware. Un serveur Windows Server 2022 assure les rôles
+    AD DS, DNS et DHCP sur le domaine <code style="color:var(--accent);font-family:var(--mono)">lab.local</code>.
+    Deux clients sont joints au domaine : un poste Windows 10 et une machine Debian 13.
+    Le déploiement de l'agent d'inventaire GLPI est automatisé via GPO pour tous les postes du domaine.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
+  <!-- ────────────────────────────────────────────
+       1. INFRASTRUCTURE
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Infrastructure réseau</div>
+    <h3>Schéma d'adressage</h3>
+    <p>Le réseau du lab est en <strong style="color:var(--text)">192.168.100.0/24</strong>.
+    Le serveur AD/DNS/DHCP héberge tous les services centraux. Les clients reçoivent
+    leur configuration réseau via DHCP, à l'exception des postes à IP statique.</p>
 
-    <h3>Objectifs</h3>
-    <p>...</p>
-
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="ic-label">Serveur AD/DNS/DHCP</div>
+        <div class="ic-value">lab_rad_win22</div>
+        <p>192.168.100.10 · Windows Server 2022</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Client Windows</div>
+        <div class="ic-value">lab_rad_win10</div>
+        <p>192.168.100.54 · Windows 10</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Client Linux</div>
+        <div class="ic-value">LAB_RAD-DEB13</div>
+        <p>Debian 13 · joint au domaine</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Passerelle</div>
+        <div class="ic-value">192.168.100.254</div>
+        <p>Option DHCP 003 Routeur</p>
+      </div>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ────────────────────────────────────────────
+       2. ACTIVE DIRECTORY
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Active Directory</div>
+    <h3>Domaine et ordinateurs</h3>
+    <p>Le domaine <strong style="color:var(--text)">lab.local</strong> est configuré avec une forêt unique.
+    Les machines clientes sont jointes au domaine et apparaissent dans l'OU <em>Computers</em>.
+    Des OU supplémentaires organisent les groupes locaux et les ordinateurs du domaine.</p>
+
+    <div class="screenshot-block">
+      <!-- Renommer le fichier correspondant en "ad_computers.png" et le placer dans Assets/AD/ -->
+      <img src="../Assets/AD/ad_computers.png" alt="Utilisateurs et ordinateurs Active Directory — OU Computers avec LAB_RAD-DEB13 et LAB_RAD_WIN10">
+      <div class="screenshot-caption">
+        Console "Utilisateurs et ordinateurs Active Directory" — OU Computers avec les deux machines jointes au domaine lab.local
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       3. DHCP
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">DHCP</div>
+    <h3>Étendue et options</h3>
+    <p>Une étendue DHCP nommée <strong style="color:var(--text)">radius</strong> distribue les adresses
+    sur le réseau 192.168.100.0. Le pool va de <code style="color:var(--accent);font-family:var(--mono)">.50</code> à
+    <code style="color:var(--accent);font-family:var(--mono)">.200</code>. Les options d'étendue fournissent
+    automatiquement la passerelle, le serveur DNS et le suffixe de domaine aux clients.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <!-- Renommer en "dhcp_pool.png" -->
+        <img src="../Assets/AD/dhcp_pool.png" alt="DHCP — Pool d'adresses 192.168.100.50 à 192.168.100.200">
+        <div class="screenshot-caption">Pool d'adresses : 192.168.100.50 → .200</div>
+      </div>
+      <div class="screenshot-block">
+        <!-- Renommer en "dhcp_options.png" -->
+        <img src="../Assets/AD/dhcp_options.png" alt="DHCP — Options d'étendue : routeur, DNS, domaine">
+        <div class="screenshot-caption">Options d'étendue — Routeur, DNS, Nom de domaine</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       4. CLIENT — IPCONFIG
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Vérification client</div>
+    <h3>Configuration IP du poste Windows 10</h3>
+    <p>La commande <code style="color:var(--accent);font-family:var(--mono)">ipconfig /all</code> sur le client
+    <strong style="color:var(--text)">lab_rad_win10</strong> confirme l'appartenance au domaine
+    <strong style="color:var(--text)">lab.local</strong>, l'adresse IP statique attribuée et le serveur DNS
+    pointant vers le contrôleur de domaine (192.168.100.10).</p>
+
+    <div class="screenshot-block">
+      <!-- Renommer en "client_ipconfig.png" -->
+      <img src="../Assets/AD/client_ipconfig.png" alt="ipconfig /all sur lab_rad_win10 — IP 192.168.100.54, DNS 192.168.100.10, domaine lab.local">
+      <div class="screenshot-caption">
+        ipconfig /all — lab_rad_win10 · IP 192.168.100.54 · DNS 192.168.100.10 · Suffixe DNS : lab.local
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       5. GPO — DÉPLOIEMENT GLPI
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">GPO · Déploiement automatisé</div>
+    <h3>Deploy_GLPI_Agent</h3>
+    <p>Une GPO dédiée automatise le déploiement de l'agent d'inventaire GLPI sur l'ensemble des postes du domaine.
+    Elle fonctionne en deux étapes : d'abord copier le script batch depuis un partage réseau vers
+    <code style="color:var(--accent);font-family:var(--mono)">C:\Windows\</code>, puis l'exécuter au démarrage
+    de chaque machine via un script de stratégie ordinateur.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <!-- Renommer en "gpo_fichiers.png" -->
+        <img src="../Assets/AD/gpo_fichiers.png" alt="GPO Deploy_GLPI_Agent — Préférences Fichiers : copie glpi-inventory.bat depuis le partage réseau">
+        <div class="screenshot-caption">
+          Préférences &gt; Fichiers — copie de glpi-inventory.bat depuis \\192.168.100.10\glpi\ vers C:\Windows\
+        </div>
+      </div>
+      <div class="screenshot-block">
+        <!-- Renommer en "gpo_script.png" -->
+        <img src="../Assets/AD/gpo_script.png" alt="GPO Deploy_GLPI_Agent — Script de démarrage glpi-inventory.bat">
+        <div class="screenshot-caption">
+          Scripts (Démarrage) — exécution de \\LAB_RAD_WIN22\Windows\glpi-inventory.bat au boot
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       6. RÉSULTAT — GLPI AGENT INSTALLÉ
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Résultat</div>
+    <h3>GLPI Agent déployé sur le client</h3>
+    <p>Après application de la GPO, l'agent <strong style="color:var(--text)">GLPI Agent 1.16</strong>
+    (Teclib') est bien installé sur le poste client Windows 10, visible dans
+    <em>Programmes et fonctionnalités</em>. L'inventaire du parc est désormais automatiquement
+    remonté vers le serveur GLPI.</p>
+
+    <div class="screenshot-block">
+      <!-- Renommer en "glpi_agent_installed.png" -->
+      <img src="../Assets/AD/glpi_agent_installed.png" alt="Programmes et fonctionnalités — GLPI Agent 1.16 installé sur le client Windows 10">
+      <div class="screenshot-caption">
+        Programmes et fonctionnalités — GLPI Agent 1.16 · Teclib' · installé le 06/03/2026
+      </div>
+    </div>
+  </div>
+
+  <!-- ── Retour ── -->
+  <div class="reveal" style="margin-top: 2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 
