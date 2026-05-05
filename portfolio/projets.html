@@ -104,7 +104,7 @@
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="./Assets/logo.png"></a>
+  <a href="index.html" class="nav-logo">bc://portfolio</a>
   <ul class="nav-links">
     <li><a href="index.html">accueil</a></li>
     <li><a href="projets.html">projets</a></li>
@@ -132,52 +132,55 @@
          · .project-link  → lien GitHub ou doc (supprimer la balise si pas de lien)
   ═══════════════════════════════════════════════════════ -->
 
+  <!-- ═══════════════════════════════════════════════════════
+       AJOUTER UN PROJET
+       ───────────────────────────────────────────────────────
+       Copier un bloc .project-card complet et le coller ici.
+       · .project-type  → catégorie
+       · h3             → nom du projet
+       · p              → description courte
+       · .stack-tag     → une balise par techno
+       · .project-link  → pointe vers Projets/NomDuFichier.html
+  ═══════════════════════════════════════════════════════ -->
+
   <div class="projects-grid">
 
     <!-- PROJET 1 -->
     <div class="project-card reveal">
       <div class="project-type">Réseau · Sécurité</div>
       <h3>Pare-feu pfSense</h3>
-      <p>
-        Mise en place et configuration d'un pare-feu pfSense en environnement virtualisé.
-        Segmentation WAN/LAN, règles de filtrage, routage inter-VLAN.
-      </p>
+      <p>Mise en place et configuration d'un pare-feu pfSense en environnement virtualisé.
+      Segmentation WAN/LAN, règles de filtrage, routage inter-VLAN.</p>
       <div class="project-stack">
         <span class="stack-tag">pfSense</span>
         <span class="stack-tag">WAN/LAN</span>
         <span class="stack-tag">Virtualisation</span>
         <span class="stack-tag">Firewall</span>
       </div>
-      <a href="./Projets/Pare-feu_pfSense.html" class="project-link">Voir le projet</a>
-      <!-- <a href="#" class="project-link">→ Voir le projet</a> -->
+      <a href="Projets/Pare-feu_pfSense.html" class="project-link">→ Voir le projet</a>
     </div>
 
     <!-- PROJET 2 -->
     <div class="project-card reveal">
       <div class="project-type">Administration système</div>
       <h3>Active Directory &amp; DHCP</h3>
-      <p>
-        Déploiement d'un domaine Active Directory avec gestion des utilisateurs, groupes et GPO.
-        Service DHCP associé sur Windows Server en environnement lab.
-      </p>
+      <p>Déploiement d'un domaine Active Directory avec gestion des utilisateurs, groupes et GPO.
+      Service DHCP associé sur Windows Server en environnement lab.</p>
       <div class="project-stack">
         <span class="stack-tag">Windows Server</span>
         <span class="stack-tag">AD DS</span>
         <span class="stack-tag">DHCP</span>
         <span class="stack-tag">GPO</span>
       </div>
-      <a href="./Projets/Active_Directory_&_DHCP.html" class="project-link">Voir le projet</a>
-      <!-- <a href="#" class="project-link">→ Voir le projet</a> -->
+      <a href="Projets/Active_Directory_&_DHCP.html" class="project-link">→ Voir le projet</a>
     </div>
 
     <!-- PROJET 3 -->
     <div class="project-card reveal">
       <div class="project-type">Lab réseau</div>
       <h3>Infrastructure GNS3 / RADIUS</h3>
-      <p>
-        Lab réseau complet sous GNS3 — authentification 802.1X via serveur RADIUS,
-        VLAN, configuration de switchs et routeurs Cisco.
-      </p>
+      <p>Lab réseau complet sous GNS3 — authentification 802.1X via serveur RADIUS,
+      VLAN, configuration de switchs et routeurs Cisco.</p>
       <div class="project-stack">
         <span class="stack-tag">GNS3</span>
         <span class="stack-tag">RADIUS</span>
@@ -185,22 +188,103 @@
         <span class="stack-tag">VLAN</span>
         <span class="stack-tag">Cisco</span>
       </div>
-      <a href="./Projets/Infrastructure_GNS3_RADIUS.html" class="project-link">Voir le projet</a>
-      <!-- <a href="#" class="project-link">→ Voir le projet</a> -->
+      <a href="Projets/Infrastructure_GNS3_RADIUS.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 4 -->
+    <div class="project-card reveal">
+      <div class="project-type">Administration · Support</div>
+      <h3>GLPI</h3>
+      <p>Installation et configuration d'un serveur GLPI pour la gestion des tickets
+      et inventaire du parc informatique.</p>
+      <div class="project-stack">
+        <span class="stack-tag">GLPI</span>
+        <span class="stack-tag">Linux</span>
+        <span class="stack-tag">Apache</span>
+        <span class="stack-tag">MySQL</span>
+      </div>
+      <a href="Projets/GLPI.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 5 -->
+    <div class="project-card reveal">
+      <div class="project-type">Automatisation · CI/CD</div>
+      <h3>DevOps</h3>
+      <p>Projet d'automatisation et de déploiement continu.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Linux</span>
+        <span class="stack-tag">Bash</span>
+        <span class="stack-tag">Git</span>
+      </div>
+      <a href="Projets/DevOps.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 6 -->
+    <div class="project-card reveal">
+      <div class="project-type">Projet fil rouge Bachelor</div>
+      <h3>Projet B3 — Cyna</h3>
+      <p>Projet fil rouge Bachelor CPI RES — domaine infrastructure.
+      Cloud hybride, virtualisation et administration centralisée.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Azure</span>
+        <span class="stack-tag">Hyper-V</span>
+        <span class="stack-tag">Intune</span>
+        <span class="stack-tag">Ansible</span>
+        <span class="stack-tag">Terraform</span>
+      </div>
+      <a href="Projets/Projet_B3_Cyna.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 7 -->
+    <div class="project-card reveal">
+      <div class="project-type">Projet BTS SIO</div>
+      <h3>Projet BTS E6 — Léger</h3>
+      <p>Projet de synthèse BTS SIO SLAM — épreuve E6, contexte léger.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Windows</span>
+        <span class="stack-tag">Réseau</span>
+      </div>
+      <a href="Projets/Projet_BTS_E6_leger.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 8 -->
+    <div class="project-card reveal">
+      <div class="project-type">Projet BTS SIO</div>
+      <h3>Projet BTS E6 — Lourd</h3>
+      <p>Projet de synthèse BTS SIO SLAM — épreuve E6, contexte lourd.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Windows Server</span>
+        <span class="stack-tag">Active Directory</span>
+        <span class="stack-tag">Réseau</span>
+      </div>
+      <a href="Projets/Projet_BTS_E6_lourd.html" class="project-link">→ Voir le projet</a>
+    </div>
+
+    <!-- PROJET 9 -->
+    <div class="project-card reveal">
+      <div class="project-type">Lab · Embarqué</div>
+      <h3>Serveur multimédia Raspberry Pi</h3>
+      <p>Mise en place d'un serveur multimédia sur Raspberry Pi — configuration réseau,
+      stockage et accès distant.</p>
+      <div class="project-stack">
+        <span class="stack-tag">Raspberry Pi</span>
+        <span class="stack-tag">Linux</span>
+        <span class="stack-tag">Plex</span>
+        <span class="stack-tag">NAS</span>
+      </div>
+      <a href="Projets/Serveur_multimedia_rassbery.html" class="project-link">→ Voir le projet</a>
     </div>
 
     <!-- ── MODÈLE VIDE — copier ce bloc pour ajouter un projet ──
     <div class="project-card reveal">
       <div class="project-type">Catégorie</div>
       <h3>Nom du projet</h3>
-      <p>
-        Description du projet.
-      </p>
+      <p>Description courte.</p>
       <div class="project-stack">
         <span class="stack-tag">Techno 1</span>
         <span class="stack-tag">Techno 2</span>
       </div>
-      <a href="#" class="project-link">→ Voir le projet</a>
+      <a href="Projets/NomDuFichier.html" class="project-link">→ Voir le projet</a>
     </div>
     ── -->
 
