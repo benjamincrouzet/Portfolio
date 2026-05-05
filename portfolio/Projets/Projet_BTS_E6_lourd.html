@@ -3,8 +3,307 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benjamin Crouzet — Projet BTS E6 — Lourd</title>
+  <title>Benjamin Crouzet — Projet BTS E6 Lourd</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+    }
+
+    /* ── Blocs de section ── */
+    .section-block { margin-bottom: 4rem; }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ── Code ── */
+    .code-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-block {
+      background: #020408;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.4rem 1.75rem;
+      margin-top: 1.25rem;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.9;
+      color: #c9d1d9;
+      margin: 0;
+      white-space: pre;
+    }
+
+    .kw   { color: #ff7b72; }   /* keywords C# */
+    .type { color: #79c0ff; }   /* types */
+    .str  { color: #a5d6ff; }   /* strings */
+    .cm   { color: #555f6e; }   /* comments */
+    .fn   { color: #d2a8ff; }   /* function names */
+    .ac   { color: var(--accent); }  /* accent */
+
+    /* ── Cards formulaires ── */
+    .forms-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 1.25rem;
+      margin-top: 1.5rem;
+    }
+
+    .form-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.5rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .form-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 3px; height: 100%;
+      background: var(--accent);
+    }
+
+    .form-card .fc-num {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-card h4 {
+      font-family: var(--display);
+      font-size: 1rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.6rem;
+    }
+
+    .form-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .form-card ul li {
+      font-family: var(--mono);
+      font-size: 0.75rem;
+      color: var(--muted);
+      padding: 0.2rem 0;
+      padding-left: 0.85rem;
+      position: relative;
+    }
+
+    .form-card ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: 0.5;
+    }
+
+    /* ── Infra / stack ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stack-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+    }
+
+    .stack-card .sc-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .stack-card .sc-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .stack-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── Gantt ── */
+    .gantt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    .gantt-table th {
+      color: var(--accent);
+      text-align: left;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+
+    .gantt-table td {
+      padding: 0.75rem 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: middle;
+    }
+
+    .gantt-table tr:last-child td { border-bottom: none; }
+
+    .gantt-bar-wrap {
+      background: var(--bg3);
+      border-radius: 2px;
+      height: 6px;
+      width: 200px;
+      overflow: hidden;
+    }
+
+    .gantt-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── DB schéma ── */
+    .db-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .db-table-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .db-table-card .dt-header {
+      background: rgba(0,212,170,0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .db-table-card ul {
+      list-style: none;
+      padding: 0.6rem 1rem;
+      margin: 0;
+    }
+
+    .db-table-card ul li {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 0.18rem 0;
+    }
+
+    .db-table-card ul li.pk { color: var(--accent); }
+
+    /* ── Docs ── */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .doc-link:hover {
+      border-color: rgba(0,212,170,0.4);
+      color: var(--accent);
+    }
+
+    .doc-link .dl-icon {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      min-width: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 700px) {
+      .gantt-bar-wrap { width: 100px; }
+    }
+  </style>
 </head>
 <body>
 
@@ -19,44 +318,387 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
     <h2>Projet BTS E6 — Lourd</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Projet BTS SIO</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">Windows Server</span>
-    <span class="tag accent">Active Directory</span>
-    <span class="tag accent">Réseau</span>
+    <span class="tag accent">C# WinForms</span>
+    <span class="tag accent">MySQL</span>
+    <span class="tag accent">BCrypt</span>
+    <span class="tag accent">Visual Studio 2022</span>
+    <span class="tag">WAMP</span>
+    <span class="tag">ADO.NET</span>
+    <span class="tag">BTS SIO SLAM</span>
+    <span class="tag">Épreuve E6</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Projet de synthèse BTS SIO SLAM — épreuve E6, contexte lourd.</p>
+  <p class="project-intro reveal">
+    Réalisation n°2 de l'épreuve E6 BTS SIO SLAM — session 2025.
+    Application WinForms C# d'administration de base de données, conçue comme interface back-office
+    du projet léger (site e-commerce PHP). Authentification sécurisée par BCrypt, navigation entre
+    les tables MySQL, et opérations CRUD complètes via une interface dynamique générée à la volée.
+    Réalisé seul, de décembre 2024 à avril 2025, à H3 Hitema Paris 15e.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
+  <!-- ──────────────────────────────────────────
+       STACK TECHNIQUE
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Environnement technique</div>
+    <h3>Stack utilisée</h3>
 
-    <h3>Objectifs</h3>
-    <p>...</p>
-
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="sc-label">Langage</div>
+        <div class="sc-value">C# · .NET</div>
+        <p>WinForms · Visual Studio 2022</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Base de données</div>
+        <div class="sc-value">MySQL</div>
+        <p>WAMP · bdd_cpx2</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Packages NuGet</div>
+        <div class="sc-value">MySql.Data</div>
+        <p>BCrypt.Net-Next</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Versioning</div>
+        <div class="sc-value">Git / GitHub</div>
+        <p>github.com/benjamincrouzet</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Machine</div>
+        <div class="sc-value">Vostro 3520</div>
+        <p>Windows 10+</p>
+      </div>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ──────────────────────────────────────────
+       ARCHITECTURE — 3 FORMULAIRES
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Architecture applicative</div>
+    <h3>3 formulaires, 1 flux</h3>
+    <p>L'application suit un flux linéaire : connexion → sélection de table → gestion de l'enregistrement.
+    Chaque formulaire est indépendant et communique par passage de paramètres au constructeur.</p>
+
+    <div class="forms-grid">
+      <div class="form-card">
+        <div class="fc-num">Form1</div>
+        <h4>Authentification</h4>
+        <ul>
+          <li>Champ email + mot de passe</li>
+          <li>Requête SQL paramétrée</li>
+          <li>Vérification BCrypt</li>
+          <li>Ouverture Form2 si OK</li>
+        </ul>
+      </div>
+      <div class="form-card">
+        <div class="fc-num">Form2</div>
+        <h4>Navigation tables</h4>
+        <ul>
+          <li>SHOW TABLES → CheckedListBox</li>
+          <li>SELECT * → DataGridView</li>
+          <li>Sélection d'une ligne</li>
+          <li>Ouverture Form3</li>
+        </ul>
+      </div>
+      <div class="form-card">
+        <div class="fc-num">Form3</div>
+        <h4>CRUD dynamique</h4>
+        <ul>
+          <li>DESCRIBE table → Labels/TextBoxes</li>
+          <li>UPDATE · DELETE · INSERT</li>
+          <li>Champ password masqué + BCrypt</li>
+          <li>Interface générée à la volée</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       CODE — FORM1 : AUTHENTIFICATION
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Code · Form1</div>
+    <h3>Connexion sécurisée avec BCrypt</h3>
+    <p>La connexion récupère le hash stocké en base pour l'email saisi, puis le compare
+    au mot de passe via <code style="color:var(--accent);font-family:var(--mono)">BCrypt.Net.BCrypt.Verify()</code>.
+    La requête SQL est paramétrée pour éviter les injections.</p>
+
+    <div class="code-block">
+<pre><span class="cm">// Form1.cs — vérification de l'identité</span>
+<span class="kw">string</span> query = <span class="str">"SELECT password FROM users WHERE email = @Email"</span>;
+<span class="type">MySqlCommand</span> cmd = <span class="kw">new</span> <span class="type">MySqlCommand</span>(query, conn);
+cmd.Parameters.<span class="fn">AddWithValue</span>(<span class="str">"@Email"</span>, email);
+<span class="type">MySqlDataReader</span> reader = cmd.<span class="fn">ExecuteReader</span>();
+
+<span class="kw">if</span> (reader.HasRows && reader.<span class="fn">Read</span>())
+{
+    <span class="kw">string</span> storedPassword = reader.<span class="fn">GetString</span>(0);
+
+    <span class="kw">if</span> (BCrypt.Net.BCrypt.<span class="fn">Verify</span>(password, storedPassword))
+    {
+        <span class="type">Form2</span> form2 = <span class="kw">new</span> <span class="type">Form2</span>();
+        form2.<span class="fn">Show</span>();
+        <span class="kw">this</span>.<span class="fn">Hide</span>();
+    }
+}</pre>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       CODE — FORM2 : CHARGEMENT DES TABLES
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Code · Form2</div>
+    <h3>Chargement dynamique des tables MySQL</h3>
+    <p>Au démarrage de Form2, la liste de toutes les tables de la base est récupérée et
+    affichée dans le <code style="color:var(--accent);font-family:var(--mono)">CheckedListBox</code>.
+    La sélection d'une table déclenche immédiatement un <code style="color:var(--accent);font-family:var(--mono)">SELECT *</code>
+    affiché dans le <code style="color:var(--accent);font-family:var(--mono)">DataGridView</code>.</p>
+
+    <div class="code-block">
+<pre><span class="cm">// Form2.cs — récupération des tables</span>
+<span class="kw">private void</span> <span class="fn">LoadDatabaseTables</span>()
+{
+    <span class="type">MySqlCommand</span> cmd = <span class="kw">new</span> <span class="type">MySqlCommand</span>(<span class="str">"SHOW TABLES"</span>, conn);
+    <span class="type">MySqlDataReader</span> reader = cmd.<span class="fn">ExecuteReader</span>();
+
+    <span class="kw">while</span> (reader.<span class="fn">Read</span>())
+        NomDesTables.Items.<span class="fn">Add</span>(reader[0].<span class="fn">ToString</span>());
+}
+
+<span class="cm">// Affichage du contenu de la table sélectionnée</span>
+<span class="kw">private void</span> <span class="fn">DisplayTableData</span>()
+{
+    <span class="kw">string</span> query = <span class="str">$"SELECT * FROM {selectedTable}"</span>;
+    <span class="type">MySqlDataAdapter</span> dataAdapter = <span class="kw">new</span> <span class="type">MySqlDataAdapter</span>(query, conn);
+    <span class="type">DataTable</span> dt = <span class="kw">new</span> <span class="type">DataTable</span>();
+    dataAdapter.<span class="fn">Fill</span>(dt);
+    AffichageDeLaTable.DataSource = dt;
+}</pre>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       CODE — FORM3 : CRUD DYNAMIQUE
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Code · Form3</div>
+    <h3>Interface CRUD générée à la volée</h3>
+    <p>Form3 utilise <code style="color:var(--accent);font-family:var(--mono)">DESCRIBE [table]</code>
+    pour récupérer la structure de n'importe quelle table, puis génère automatiquement un Label et un
+    TextBox par colonne. Le champ <code style="color:var(--accent);font-family:var(--mono)">password</code>
+    est détecté et masqué. La modification hache le nouveau mot de passe en BCrypt avant l'UPDATE.</p>
+
+    <div class="code-block">
+<pre><span class="cm">// Form3.cs — génération dynamique des champs</span>
+<span class="kw">string</span> query = <span class="str">$"DESCRIBE {tableName}"</span>;
+<span class="type">MySqlDataAdapter</span> dataAdapter = <span class="kw">new</span> <span class="type">MySqlDataAdapter</span>(query, conn);
+<span class="type">DataTable</span> dt = <span class="kw">new</span> <span class="type">DataTable</span>();
+dataAdapter.<span class="fn">Fill</span>(dt);
+
+<span class="kw">foreach</span> (<span class="type">DataRow</span> row <span class="kw">in</span> dt.Rows)
+{
+    <span class="kw">string</span> columnName = row[<span class="str">"Field"</span>].<span class="fn">ToString</span>();
+    <span class="type">Label</span> label = <span class="kw">new</span> <span class="type">Label</span> { Text = columnName };
+    <span class="type">TextBox</span> textBox = <span class="kw">new</span> <span class="type">TextBox</span> { Width = 200 };
+
+    <span class="kw">if</span> (columnName.<span class="fn">ToLower</span>() == <span class="str">"password"</span>)
+        textBox.PasswordChar = <span class="str">'*'</span>;   <span class="cm">// masqué</span>
+    <span class="kw">else</span>
+        textBox.Text = rowData[columnName];
+
+    textBoxes[columnName] = textBox;
+    flowLayoutPanel1.Controls.<span class="fn">Add</span>(label);
+    flowLayoutPanel1.Controls.<span class="fn">Add</span>(textBox);
+}</pre>
+    </div>
+
+    <div class="code-block" style="margin-top:0.75rem;">
+<pre><span class="cm">// Modification — hash BCrypt si champ password</span>
+<span class="kw">foreach</span> (<span class="kw">var</span> entry <span class="kw">in</span> textBoxes)
+{
+    <span class="kw">if</span> (entry.Key.<span class="fn">ToLower</span>() == <span class="str">"password"</span>)
+    {
+        <span class="kw">string</span> hashed = BCrypt.Net.BCrypt.<span class="fn">HashPassword</span>(entry.Value.Text, workFactor: 10);
+        updateFields.<span class="fn">Add</span>(<span class="str">$"{entry.Key} = '{hashed}'"</span>);
+    }
+    <span class="kw">else</span>
+        updateFields.<span class="fn">Add</span>(<span class="str">$"{entry.Key} = '{entry.Value.Text}'"</span>);
+}
+<span class="kw">string</span> updateQuery = <span class="str">$"UPDATE {tableName} SET {string.Join(", ", updateFields)} WHERE id = {recordID}"</span>;</pre>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       BASE DE DONNÉES
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Base de données · bdd_cpx2</div>
+    <h3>Modèle relationnel</h3>
+    <p>La base est partagée avec le projet léger (site e-commerce PHP). Le MCD a été réalisé
+    sur Looping. L'application C# se connecte en lecture/écriture sur l'ensemble des tables.</p>
+
+    <div class="db-grid">
+      <div class="db-table-card">
+        <div class="dt-header">users</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>username VARCHAR(30)</li>
+          <li>email VARCHAR(50)</li>
+          <li>password VARCHAR(255)</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">administrateur</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>username VARCHAR</li>
+          <li>email VARCHAR</li>
+          <li>password VARCHAR</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">products</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>name VARCHAR(255)</li>
+          <li>image VARCHAR(255)</li>
+          <li>video VARCHAR(255)</li>
+          <li>price DECIMAL(10,2)</li>
+          <li>description TEXT</li>
+          <li>duration VARCHAR(20)</li>
+          <li>upload_date DATE</li>
+          <li>type VARCHAR(70)</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">commande</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>date_commande</li>
+          <li>prix_total</li>
+          <li>id_1 FK → users</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">commande_contenu</div>
+        <ul>
+          <li class="pk">id FK → commande</li>
+          <li>id_1 FK → products</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">adresse</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>pays</li>
+          <li>ville</li>
+          <li>rue</li>
+          <li>numero</li>
+          <li>id_1 FK → users</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       PLANNING
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Planning</div>
+    <h3>Diagramme de Gantt</h3>
+    <p>Projet réalisé de mars à juin 2025, en parallèle de la préparation aux épreuves BTS.</p>
+
+    <table class="gantt-table">
+      <thead>
+        <tr>
+          <th>Tâche</th>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Durée</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text);">Début du projet lourd</td>
+          <td>20/03/2025</td>
+          <td>26/03/2025</td>
+          <td>7 j</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:4%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Mise en fonction de l'application</td>
+          <td>27/03/2025</td>
+          <td>28/03/2025</td>
+          <td>2 j</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:1%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Finalisation de l'application</td>
+          <td>31/03/2025</td>
+          <td>04/04/2025</td>
+          <td>5 j</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:3%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Mise à jour régulière</td>
+          <td>07/04/2025</td>
+          <td>23/06/2025</td>
+          <td>~78 j</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:100%"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       DOCUMENTS
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Documents</div>
+    <h3>Documentation du projet</h3>
+    <p>L'ensemble de la documentation est disponible ci-dessous et sur GitHub.</p>
+
+    <!-- Mettre les PDFs dans Assets/E6_lourd/ et adapter les href si besoin -->
+    <div class="docs-grid">
+      <a href="../Assets/E6_lourd/Cahier_Des_Charges_PPLOURD.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Cahier des charges
+      </a>
+      <a href="../Assets/E6_lourd/Manuel_d_utilisation_PPLOURD.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Manuel d'utilisation
+      </a>
+      <a href="../Assets/E6_lourd/MCD_UML_et_MLD.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        MCD, UML &amp; MLD
+      </a>
+      <a href="../Assets/E6_lourd/PPLOURD_diagrame_gantts.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Diagramme de Gantt
+      </a>
+      <a href="../Assets/E6_lourd/SLAM-Fiche-presentation-situation-2_Lourd_.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Fiche E6 réalisation n°2
+      </a>
+      <a href="https://github.com/benjamincrouzet?tab=repositories" class="doc-link" target="_blank">
+        <span class="dl-icon">GIT</span>
+        GitHub · Code source
+      </a>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 
