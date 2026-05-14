@@ -3,8 +3,384 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benjamin Crouzet — Projet BTS E6 — Léger</title>
+  <title>Benjamin Crouzet — Projet BTS E6 Léger</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+    }
+
+    .section-block { margin-bottom: 4rem; }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    /* ── Stack ── */
+    .stack-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .stack-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1rem 1.25rem;
+    }
+
+    .stack-card .sc-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.3rem;
+    }
+
+    .stack-card .sc-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .stack-card p {
+      font-size: 0.78rem;
+      color: var(--muted);
+      margin-top: 0.2rem;
+    }
+
+    /* ── Pages du site ── */
+    .pages-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .page-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .page-card .pc-file {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+      letter-spacing: 0.05em;
+    }
+
+    .page-card .pc-access {
+      font-family: var(--mono);
+      font-size: 0.62rem;
+      color: var(--muted);
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      border: 1px solid var(--border);
+      border-radius: 2px;
+      padding: 0.1rem 0.4rem;
+      display: inline-block;
+      margin-bottom: 0.5rem;
+    }
+
+    .page-card .pc-access.admin { color: #ff7b72; border-color: rgba(255,123,114,0.3); }
+    .page-card .pc-access.user  { color: #79c0ff; border-color: rgba(121,192,255,0.3); }
+    .page-card .pc-access.pub   { color: var(--accent); border-color: rgba(0,212,170,0.3); }
+
+    .page-card h4 {
+      font-family: var(--display);
+      font-size: 0.95rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.4rem;
+    }
+
+    .page-card p {
+      font-size: 0.8rem;
+      color: var(--muted);
+      line-height: 1.6;
+    }
+
+    /* ── Fonctionnalités ── */
+    .features-cols {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      margin-top: 1.5rem;
+    }
+
+    .features-col h4 {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.75rem;
+    }
+
+    .features-col ul {
+      list-style: none;
+      padding: 0; margin: 0;
+    }
+
+    .features-col ul li {
+      font-size: 0.88rem;
+      color: var(--muted);
+      padding: 0.3rem 0;
+      padding-left: 1rem;
+      position: relative;
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      line-height: 1.5;
+    }
+
+    .features-col ul li::before {
+      content: '→';
+      position: absolute;
+      left: 0;
+      color: var(--accent);
+      opacity: 0.5;
+      font-size: 0.75rem;
+    }
+
+    /* ── DB ── */
+    .db-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(170px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .db-table-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .db-table-card .dt-header {
+      background: rgba(0,212,170,0.08);
+      border-bottom: 1px solid var(--border);
+      padding: 0.5rem 1rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--accent);
+      font-weight: 500;
+      letter-spacing: 0.06em;
+    }
+
+    .db-table-card ul {
+      list-style: none;
+      padding: 0.6rem 1rem;
+      margin: 0;
+    }
+
+    .db-table-card ul li {
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      padding: 0.18rem 0;
+    }
+
+    .db-table-card ul li.pk { color: var(--accent); }
+
+    /* ── Gantt ── */
+    .gantt-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1.5rem;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+    }
+
+    .gantt-table th {
+      color: var(--accent);
+      text-align: left;
+      padding: 0.6rem 1rem;
+      border-bottom: 1px solid var(--border);
+      font-weight: 400;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      font-size: 0.68rem;
+    }
+
+    .gantt-table td {
+      padding: 0.75rem 1rem;
+      color: var(--muted);
+      border-bottom: 1px solid rgba(255,255,255,0.04);
+      vertical-align: middle;
+    }
+
+    .gantt-table tr:last-child td { border-bottom: none; }
+
+    .gantt-bar-wrap {
+      background: var(--bg3);
+      border-radius: 2px;
+      height: 6px;
+      width: 180px;
+      overflow: hidden;
+    }
+
+    .gantt-bar {
+      height: 100%;
+      background: var(--accent);
+      border-radius: 2px;
+    }
+
+    /* ── Screenshots placeholder ── */
+    .screenshot-placeholder {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px dashed rgba(0,212,170,0.25);
+      border-radius: 4px;
+      padding: 2.5rem;
+      text-align: center;
+      font-family: var(--mono);
+      font-size: 0.78rem;
+      color: var(--muted);
+    }
+
+    /* ── Docs ── */
+    .docs-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .doc-link {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      padding: 1rem 1.25rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      text-decoration: none;
+      color: var(--text);
+      font-size: 0.88rem;
+      transition: border-color 0.2s, color 0.2s;
+    }
+
+    .doc-link:hover {
+      border-color: rgba(0,212,170,0.4);
+      color: var(--accent);
+    }
+
+    .doc-link .dl-icon {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      min-width: 30px;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+    }
+
+    @media (max-width: 700px) {
+      .features-cols { grid-template-columns: 1fr; }
+      .gantt-bar-wrap { width: 100px; }
+    }
+
+    /* ── Code PHP ── */
+    .code-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--muted);
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      margin-bottom: 0.5rem;
+    }
+
+    .code-block {
+      background: #020408;
+      border: 1px solid var(--border);
+      border-left: 3px solid var(--accent);
+      border-radius: 4px;
+      padding: 1.4rem 1.75rem;
+      margin-top: 0.75rem;
+      overflow-x: auto;
+    }
+
+    .code-block pre {
+      font-family: var(--mono);
+      font-size: 0.8rem;
+      line-height: 1.9;
+      color: #c9d1d9;
+      margin: 0;
+      white-space: pre;
+    }
+
+    .kw   { color: #ff7b72; }
+    .type { color: #79c0ff; }
+    .str  { color: #a5d6ff; }
+    .cm   { color: #555f6e; }
+    .fn   { color: #d2a8ff; }
+    .ac   { color: var(--accent); }
+
+    /* ── Screenshots ── */
+    .screenshot-block {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .screenshot-block img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-caption {
+      padding: 0.85rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .screenshot-caption::before {
+      content: '';
+      width: 6px; height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+  </style>
 </head>
 <body>
 
@@ -19,43 +395,584 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
     <h2>Projet BTS E6 — Léger</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Projet BTS SIO</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">Windows</span>
-    <span class="tag accent">Réseau</span>
+    <span class="tag accent">PHP</span>
+    <span class="tag accent">MySQL</span>
+    <span class="tag accent">HTML · CSS · JS</span>
+    <span class="tag accent">PDO</span>
+    <span class="tag">BCrypt</span>
+    <span class="tag">WAMP</span>
+    <span class="tag">BTS SIO SLAM</span>
+    <span class="tag">Épreuve E6</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Projet de synthèse BTS SIO SLAM — épreuve E6, contexte léger.</p>
+  <p class="project-intro reveal">
+    Réalisation n°1 de l'épreuve E6 BTS SIO SLAM — session 2025.
+    Site e-commerce dédié à la vente de manga, développé en PHP avec une base MySQL.
+    Catalogue filtrable, gestion des utilisateurs, panier, commandes fictives, espace admin complet.
+    Réalisé seul, de décembre 2024 à juin 2025 — hébergé sur
+    <a href="https://benji.formationsio.fr" target="_blank" style="color:var(--accent);">benji.formationsio.fr</a>.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
+  <!-- ──────────────────────────────────────────
+       STACK
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Environnement technique</div>
+    <h3>Stack utilisée</h3>
 
-    <h3>Objectifs</h3>
-    <p>...</p>
-
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+    <div class="stack-grid">
+      <div class="stack-card">
+        <div class="sc-label">Back-end</div>
+        <div class="sc-value">PHP</div>
+        <p>Sessions · PDO · BCrypt</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Front-end</div>
+        <div class="sc-value">HTML5 · CSS3 · JS</div>
+        <p>Sliders filtres · navbar dynamique</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Base de données</div>
+        <div class="sc-value">MySQL</div>
+        <p>WAMP · PhpMyAdmin</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">IDE</div>
+        <div class="sc-value">Visual Studio Code</div>
+        <p>Git / GitHub</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Machine</div>
+        <div class="sc-value">Vostro 3520</div>
+        <p>Windows 10+</p>
+      </div>
+      <div class="stack-card">
+        <div class="sc-label">Hébergement</div>
+        <div class="sc-value">benji.formationsio.fr</div>
+        <p>Site en ligne</p>
+      </div>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ──────────────────────────────────────────
+       FONCTIONNALITÉS
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Fonctionnalités</div>
+    <h3>Ce que le site permet</h3>
+
+    <div class="features-cols">
+      <div class="features-col">
+        <h4>Frontend — Utilisateur</h4>
+        <ul>
+          <li>Page d'accueil après connexion avec avis</li>
+          <li>Catalogue filtrable par catégorie (Shonen, Seinen…)</li>
+          <li>Filtres prix min/max via sliders JS</li>
+          <li>Recherche textuelle par mot-clé</li>
+          <li>Page produit avec images et description</li>
+          <li>Panier — ajout, suppression, commande</li>
+          <li>Espace client — profil, favoris, historique commandes</li>
+          <li>Inscription et connexion sécurisées</li>
+        </ul>
+      </div>
+      <div class="features-col">
+        <h4>Backend — Administration</h4>
+        <ul>
+          <li>Tableau de bord admin (admin_dashboard.php)</li>
+          <li>Ajout de produit / vidéo (create.php)</li>
+          <li>Modification d'un produit par ID (edit.php)</li>
+          <li>Suppression (delete.php)</li>
+          <li>Gestion des utilisateurs (clients, vendeurs, admins)</li>
+          <li>Gestion des avis vérifiés</li>
+          <li>Génération de facture PDF</li>
+          <li>Gestion des stocks côté vendeur</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       PAGES DU SITE
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Architecture</div>
+    <h3>Pages PHP</h3>
+    <p>La navbar est dynamique selon l'état de connexion. Les pages admin sont protégées par vérification de session.</p>
+
+    <div class="pages-grid">
+      <div class="page-card">
+        <div class="pc-file">index.php</div>
+        <span class="pc-access pub">public</span>
+        <h4>Catalogue</h4>
+        <p>Filtres catégorie + prix, ajout au panier, lien vers cart.php</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">connexion.php</div>
+        <span class="pc-access pub">public</span>
+        <h4>Connexion</h4>
+        <p>Email + mot de passe → session → redirection accueil</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">inscription.php</div>
+        <span class="pc-access pub">public</span>
+        <h4>Inscription</h4>
+        <p>Formulaire nom, prénom, email, mot de passe</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">accueil.php</div>
+        <span class="pc-access user">connecté</span>
+        <h4>Accueil</h4>
+        <p>Mise en avant collections, commentaires, déconnexion</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">cart.php</div>
+        <span class="pc-access user">connecté</span>
+        <h4>Panier</h4>
+        <p>Articles, suppression, bouton Commander</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">search.php</div>
+        <span class="pc-access pub">public</span>
+        <h4>Recherche</h4>
+        <p>Recherche produit/vidéo par mot-clé</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">admin.php</div>
+        <span class="pc-access admin">admin</span>
+        <h4>Connexion admin</h4>
+        <p>Accès restreint à l'interface d'administration</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">admin_dashboard.php</div>
+        <span class="pc-access admin">admin</span>
+        <h4>Dashboard</h4>
+        <p>Vue globale produits, vidéos, utilisateurs</p>
+      </div>
+      <div class="page-card">
+        <div class="pc-file">create.php / edit.php</div>
+        <span class="pc-access admin">admin</span>
+        <h4>CRUD produits</h4>
+        <p>Création et modification de contenu</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       SCREENSHOTS — À COMPLÉTER
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Captures d'écran</div>
+    <h3>Interface du site</h3>
+
+    <div class="screenshot-block">
+         <img src="../Assets/E6_leger/catalogue.png" alt="Description">
+         <div class="screenshot-caption">index.php — Catalogue avec filtres</div>
+    </div>
+
+    <div class="screenshot-block">
+         <img src="../Assets/E6_leger/accueil.png" alt="Description">
+         <div class="screenshot-caption">accueil.php — Page d'accueil connecté</div>
+    </div>
+
+    <div class="screenshot-block">
+         <img src="../Assets/E6_leger/admin.png" alt="Description">
+         <div class="screenshot-caption">admin_dashboard.php — Interface admin</div>
+    </div>
+
+    <div class="screenshot-block">
+         <img src="../Assets/E6_leger/panier.png" alt="Description">
+         <div class="screenshot-caption">cart.php — Panier</div>
+    </div>
+
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       BASE DE DONNÉES
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Base de données · bdd_cpx2</div>
+    <h3>Modèle relationnel</h3>
+    <p>Base partagée avec le projet lourd. MCD réalisé sur Looping.
+    Les requêtes sont sécurisées via PDO pour éviter les injections SQL.</p>
+
+    <div class="db-grid">
+      <div class="db-table-card">
+        <div class="dt-header">users</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>username VARCHAR(30)</li>
+          <li>email VARCHAR(50)</li>
+          <li>password VARCHAR(255)</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">administrateur</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>username VARCHAR</li>
+          <li>email VARCHAR</li>
+          <li>password VARCHAR</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">products</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>name VARCHAR(255)</li>
+          <li>description TEXT</li>
+          <li>image VARCHAR(255)</li>
+          <li>image2 VARCHAR(255)</li>
+          <li>price DECIMAL</li>
+          <li>duration VARCHAR(20)</li>
+          <li>upload_date DATE</li>
+          <li>type VARCHAR(70)</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">commande</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>date_commande</li>
+          <li>prix_total</li>
+          <li>id_1 FK → users</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">commande_contenu</div>
+        <ul>
+          <li class="pk">id FK → commande</li>
+          <li>id_1 FK → products</li>
+        </ul>
+      </div>
+      <div class="db-table-card">
+        <div class="dt-header">adresse</div>
+        <ul>
+          <li class="pk">id INT PK</li>
+          <li>pays · ville · rue</li>
+          <li>numero</li>
+          <li>id_1 FK → users</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       CATALOGUE — PRODUITS RÉELS
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Catalogue · produits</div>
+    <h3>Produits du site</h3>
+    <p>Les produits sont stockés en base et affichés dynamiquement depuis
+    <code style="color:var(--accent);font-family:var(--mono)">index.php</code>.
+    Chaque image est servie depuis le dossier <code style="color:var(--accent);font-family:var(--mono)">assets/</code>.</p>
+
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:1rem;margin-top:1.5rem;">
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-align:center;">
+        <img src="../Assets/E6_leger/op.jpg" alt="One Piece" style="width:100%;height:180px;object-fit:cover;">
+        <div style="padding:0.6rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">One Piece · Shōnen</div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-align:center;">
+        <img src="../Assets/E6_leger/sao.jpg" alt="Sword Art Online" style="width:100%;height:180px;object-fit:cover;">
+        <div style="padding:0.6rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">Sword Art Online · Isekai</div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-align:center;">
+        <img src="../Assets/E6_leger/snk.jpg" alt="L'Attaque des Titans" style="width:100%;height:180px;object-fit:cover;">
+        <div style="padding:0.6rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">L'Attaque des Titans · Seinen</div>
+      </div>
+
+      <div style="background:var(--bg2);border:1px solid var(--border);border-radius:4px;overflow:hidden;text-align:center;">
+        <img src="../Assets/E6_leger/bloom.jpg" alt="Bloom Into You" style="width:100%;height:180px;object-fit:cover;">
+        <div style="padding:0.6rem;font-family:var(--mono);font-size:0.72rem;color:var(--muted);">Bloom Into You · Shōjo</div>
+      </div>
+
+    </div>
+    <p style="margin-top:1rem;font-size:0.82rem;">
+      Images réelles utilisées dans le site. Les produits sont filtrables par type
+      (<code style="color:var(--accent);font-family:var(--mono)">shonen</code>,
+      <code style="color:var(--accent);font-family:var(--mono)">shojo</code>,
+      <code style="color:var(--accent);font-family:var(--mono)">seinen</code>,
+      <code style="color:var(--accent);font-family:var(--mono)">isekai</code>) et par tranche de prix.
+    </p>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       CODE — EXTRAITS
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Code · PHP</div>
+    <h3>Extraits de code</h3>
+
+    <!-- 1. CONNEXION -->
+    <p style="margin-bottom:0.5rem;">
+      <strong style="color:#fff;">connexion.php</strong> — authentification via PDO avec
+      <code style="color:var(--accent);font-family:var(--mono)">password_verify()</code>.
+      La requête est paramétrée pour prévenir les injections SQL.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// connexion.php — vérification email + hash</span>
+<span class="kw">$stmt</span> = <span class="kw">$conn</span>-><span class="fn">prepare</span>(<span class="str">"SELECT * FROM users WHERE email = :email"</span>);
+<span class="kw">$stmt</span>-><span class="fn">bindParam</span>(<span class="str">':email'</span>, <span class="kw">$email</span>);
+<span class="kw">$stmt</span>-><span class="fn">execute</span>();
+
+<span class="kw">if</span> (<span class="kw">$stmt</span>-><span class="fn">rowCount</span>() > 0) {
+    <span class="kw">$user</span> = <span class="kw">$stmt</span>-><span class="fn">fetch</span>(PDO::FETCH_ASSOC);
+
+    <span class="kw">if</span> (<span class="fn">password_verify</span>(<span class="kw">$password</span>, <span class="kw">$user</span>[<span class="str">'password'</span>])) {
+        <span class="kw">$_SESSION</span>[<span class="str">'username'</span>] = <span class="kw">$user</span>[<span class="str">'username'</span>];
+        <span class="fn">header</span>(<span class="str">"Location: accueil.php"</span>);
+        <span class="fn">exit</span>();
+    }
+}</pre>
+    </div>
+
+    <!-- 2. INSCRIPTION -->
+    <p style="margin-top:1.75rem;margin-bottom:0.5rem;">
+      <strong style="color:#fff;">inscription.php</strong> — vérification de l'unicité de l'email,
+      hachage du mot de passe avec
+      <code style="color:var(--accent);font-family:var(--mono)">password_hash()</code> avant insertion.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// inscription.php — vérification email + hash avant INSERT</span>
+<span class="kw">$stmt</span> = <span class="kw">$conn</span>-><span class="fn">prepare</span>(<span class="str">"SELECT * FROM users WHERE email = :email"</span>);
+<span class="kw">$stmt</span>-><span class="fn">bindParam</span>(<span class="str">':email'</span>, <span class="kw">$email</span>);
+<span class="kw">$stmt</span>-><span class="fn">execute</span>();
+
+<span class="kw">if</span> (<span class="kw">$stmt</span>-><span class="fn">rowCount</span>() == 0) {
+    <span class="kw">$hashedPassword</span> = <span class="fn">password_hash</span>(<span class="kw">$password</span>, PASSWORD_DEFAULT);
+    <span class="kw">$stmt</span> = <span class="kw">$conn</span>-><span class="fn">prepare</span>(
+        <span class="str">"INSERT INTO users (username, email, password) VALUES (:username, :email, :password)"</span>
+    );
+    <span class="kw">$stmt</span>-><span class="fn">bindParam</span>(<span class="str">':username'</span>, <span class="kw">$username</span>);
+    <span class="kw">$stmt</span>-><span class="fn">bindParam</span>(<span class="str">':email'</span>, <span class="kw">$email</span>);
+    <span class="kw">$stmt</span>-><span class="fn">bindParam</span>(<span class="str">':password'</span>, <span class="kw">$hashedPassword</span>);
+    <span class="kw">$stmt</span>-><span class="fn">execute</span>();
+}</pre>
+    </div>
+
+    <!-- 3. FILTRES INDEX -->
+    <p style="margin-top:1.75rem;margin-bottom:0.5rem;">
+      <strong style="color:#fff;">index.php</strong> — filtres dynamiques par type de manga et par tranche de prix.
+      La requête SQL est construite conditionnellement selon les paramètres GET.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// index.php — construction dynamique de la requête avec filtres</span>
+<span class="kw">$sql</span> = <span class="str">"SELECT id, name, image, price FROM products WHERE 1=1"</span>;
+<span class="kw">$params</span> = [];
+
+<span class="kw">$filterConditions</span> = [];
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_GET</span>[<span class="str">'filter_shonen'</span>])) <span class="kw">$filterConditions</span>[] = <span class="str">"type = 'shonen'"</span>;
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_GET</span>[<span class="str">'filter_shojo'</span>]))  <span class="kw">$filterConditions</span>[] = <span class="str">"type = 'shojo'"</span>;
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_GET</span>[<span class="str">'filter_seinen'</span>])) <span class="kw">$filterConditions</span>[] = <span class="str">"type = 'seinen'"</span>;
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_GET</span>[<span class="str">'filter_isekai'</span>])) <span class="kw">$filterConditions</span>[] = <span class="str">"type = 'isekai'"</span>;
+
+<span class="kw">if</span> (!<span class="fn">empty</span>(<span class="kw">$filterConditions</span>))
+    <span class="kw">$sql</span> .= <span class="str">" AND ("</span> . <span class="fn">implode</span>(<span class="str">" OR "</span>, <span class="kw">$filterConditions</span>) . <span class="str">")"</span>;
+
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_GET</span>[<span class="str">'price_min'</span>], <span class="kw">$_GET</span>[<span class="str">'price_max'</span>])) {
+    <span class="kw">$sql</span> .= <span class="str">" AND price BETWEEN :min_price AND :max_price"</span>;
+    <span class="kw">$params</span>[<span class="str">':min_price'</span>] = (<span class="type">float</span>) <span class="kw">$_GET</span>[<span class="str">'price_min'</span>];
+    <span class="kw">$params</span>[<span class="str">':max_price'</span>] = (<span class="type">float</span>) <span class="kw">$_GET</span>[<span class="str">'price_max'</span>];
+}
+
+<span class="kw">$stmt</span> = <span class="kw">$pdo</span>-><span class="fn">prepare</span>(<span class="kw">$sql</span>);
+<span class="kw">$stmt</span>-><span class="fn">execute</span>(<span class="kw">$params</span>);</pre>
+    </div>
+
+    <!-- 4. PANIER SESSION -->
+    <p style="margin-top:1.75rem;margin-bottom:0.5rem;">
+      <strong style="color:#fff;">cart.php</strong> — gestion du panier en session PHP.
+      Ajout, suppression unitaire et vidage complet. Le total est calculé à la volée.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// cart.php — ajout, suppression, total</span>
+<span class="kw">if</span> (<span class="fn">isset</span>(<span class="kw">$_POST</span>[<span class="str">'remove_item'</span>])) {
+    <span class="kw">$key</span> = <span class="fn">array_search</span>(<span class="kw">$_POST</span>[<span class="str">'item_id'</span>], <span class="kw">$_SESSION</span>[<span class="str">'cart'</span>]);
+    <span class="kw">if</span> (<span class="kw">$key</span> !== <span class="kw">false</span>) {
+        <span class="fn">unset</span>(<span class="kw">$_SESSION</span>[<span class="str">'cart'</span>][<span class="kw">$key</span>]);
+        <span class="kw">$_SESSION</span>[<span class="str">'cart'</span>] = <span class="fn">array_values</span>(<span class="kw">$_SESSION</span>[<span class="str">'cart'</span>]);
+    }
+}
+
+<span class="cm">// Calcul du total avec gestion des quantités</span>
+<span class="kw">$quantities</span> = <span class="fn">array_count_values</span>(<span class="kw">$cart_items</span>);
+<span class="kw">$total</span> = 0;
+<span class="kw">foreach</span> (<span class="kw">$quantities</span> <span class="kw">as</span> <span class="kw">$item_id</span> => <span class="kw">$quantity</span>) {
+    <span class="kw">$product</span> = <span class="fn">array_values</span>(<span class="fn">array_filter</span>(
+        <span class="kw">$products</span>, <span class="kw">fn</span>(<span class="kw">$p</span>) => <span class="kw">$p</span>[<span class="str">'id'</span>] == <span class="kw">$item_id</span>
+    ))[0];
+    <span class="kw">$total</span> += <span class="kw">$product</span>[<span class="str">'price'</span>] * <span class="kw">$quantity</span>;
+}</pre>
+    </div>
+
+    <!-- 5. ADMIN DASHBOARD -->
+    <p style="margin-top:1.75rem;margin-bottom:0.5rem;">
+      <strong style="color:#fff;">admin_dashboard.php</strong> — interface d'administration entièrement dynamique.
+      <code style="color:var(--accent);font-family:var(--mono)">SHOW TABLES</code> récupère toutes les tables,
+      puis chacune est affichée avec ses données et des liens Edit/Delete/Add.
+      Les mots de passe sont masqués côté affichage.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// admin_dashboard.php — affichage dynamique de toutes les tables</span>
+<span class="kw">$stmt</span> = <span class="kw">$conn</span>-><span class="fn">query</span>(<span class="str">"SHOW TABLES"</span>);
+<span class="kw">$tables</span> = <span class="kw">$stmt</span>-><span class="fn">fetchAll</span>(PDO::FETCH_ASSOC);
+
+<span class="kw">foreach</span> (<span class="kw">$tables</span> <span class="kw">as</span> <span class="kw">$table</span>) {
+    <span class="kw">$tableName</span> = <span class="kw">$table</span>[<span class="str">'Tables_in_'</span> . <span class="kw">$dbname</span>];
+    <span class="kw">$stmt</span> = <span class="kw">$conn</span>-><span class="fn">prepare</span>(<span class="str">"SELECT * FROM $tableName"</span>);
+    <span class="kw">$stmt</span>-><span class="fn">execute</span>();
+    <span class="kw">$rows</span> = <span class="kw">$stmt</span>-><span class="fn">fetchAll</span>(PDO::FETCH_ASSOC);
+
+    <span class="kw">foreach</span> (<span class="kw">$rows</span> <span class="kw">as</span> <span class="kw">$row</span>) {
+        <span class="kw">foreach</span> (<span class="kw">$row</span> <span class="kw">as</span> <span class="kw">$column</span> => <span class="kw">$data</span>) {
+            <span class="cm">// Masquer les mots de passe</span>
+            <span class="kw">if</span> (<span class="kw">$column</span> === <span class="str">'password'</span>) { <span class="kw">echo</span> <span class="str">"&lt;td&gt;*****&lt;/td&gt;"</span>; }
+            <span class="kw">else</span> { <span class="kw">echo</span> <span class="str">"&lt;td&gt;"</span> . <span class="fn">htmlspecialchars</span>(<span class="kw">$data</span> ?? <span class="str">''</span>) . <span class="str">"&lt;/td&gt;"</span>; }
+        }
+        <span class="cm">// Liens Edit / Delete par ID</span>
+        <span class="kw">echo</span> <span class="str">"&lt;a href='edit.php?table=$tableName&amp;id={$row[$idColumn]}'&gt;Edit&lt;/a&gt;"</span>;
+        <span class="kw">echo</span> <span class="str">"&lt;a href='delete.php?table=$tableName&amp;id={$row[$idColumn]}'&gt;Delete&lt;/a&gt;"</span>;
+    }
+    <span class="kw">echo</span> <span class="str">"&lt;a href='create.php?table=$tableName'&gt;Add&lt;/a&gt;"</span>;
+}</pre>
+    </div>
+
+    <!-- 6. NAVBAR DYNAMIQUE -->
+    <p style="margin-top:1.75rem;margin-bottom:0.5rem;">
+      <strong style="color:#fff;">navbar.php</strong> — navigation conditionnelle selon l'état de session.
+      Invité et utilisateur connecté ne voient pas les mêmes liens.
+    </p>
+    <div class="code-block">
+<pre><span class="cm">// navbar.php — liens dynamiques selon $_SESSION</span>
+<span class="kw">&lt;?php</span> <span class="kw">if</span> (!<span class="fn">isset</span>(<span class="kw">$_SESSION</span>[<span class="str">'username'</span>])): <span class="kw">?&gt;</span>
+    <span class="cm">&lt;!-- Visiteur non connecté --&gt;</span>
+    &lt;a href=<span class="str">"connexion.php"</span>&gt;Connexion&lt;/a&gt;
+    &lt;a href=<span class="str">"inscription.php"</span>&gt;Inscription&lt;/a&gt;
+<span class="kw">&lt;?php</span> <span class="kw">else</span>: <span class="kw">?&gt;</span>
+    <span class="cm">&lt;!-- Utilisateur connecté --&gt;</span>
+    &lt;a href=<span class="str">"cart.php"</span>&gt;Panier&lt;/a&gt;
+    &lt;a href=<span class="str">"compte.php"</span>&gt;Profil&lt;/a&gt;
+    &lt;a href=<span class="str">"logout.php"</span>&gt;Déconnexion&lt;/a&gt;
+<span class="kw">&lt;?php</span> <span class="kw">endif</span>; <span class="kw">?&gt;</span></pre>
+    </div>
+
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       GANTT
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Planning</div>
+    <h3>Diagramme de Gantt</h3>
+    <p>Projet démarré en décembre 2024, livré et hébergé avant les épreuves BTS de mai-juin 2025.</p>
+
+    <table class="gantt-table">
+      <thead>
+        <tr>
+          <th>Tâche</th>
+          <th>Début</th>
+          <th>Fin</th>
+          <th>Durée</th>
+          <th></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="color:var(--text);">Début du projet léger PHP</td>
+          <td>09/12/2024</td>
+          <td>17/12/2024</td>
+          <td>9 j</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:4%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Bases du projet</td>
+          <td>18/12/2024</td>
+          <td>15/01/2025</td>
+          <td>~4 sem</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:14%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Ajout de produits et évolution</td>
+          <td>16/01/2025</td>
+          <td>04/02/2025</td>
+          <td>~3 sem</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:11%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Mise en fonction et fonctionnalités</td>
+          <td>05/02/2025</td>
+          <td>24/02/2025</td>
+          <td>~3 sem</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:11%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Finalisation et hébergement</td>
+          <td>27/02/2025</td>
+          <td>18/03/2025</td>
+          <td>~3 sem</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:11%"></div></div></td>
+        </tr>
+        <tr>
+          <td style="color:var(--text);">Mise à jour régulière</td>
+          <td>18/03/2025</td>
+          <td>23/06/2025</td>
+          <td>~14 sem</td>
+          <td><div class="gantt-bar-wrap"><div class="gantt-bar" style="width:100%"></div></div></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <!-- ──────────────────────────────────────────
+       DOCUMENTS
+  ────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Documents</div>
+    <h3>Documentation du projet</h3>
+
+    <!-- PDFs à placer dans Assets/E6_leger/ -->
+    <div class="docs-grid">
+      <a href="../Assets/E6_leger/Cahier_Des_Charges_PPLERGER.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Cahier des charges
+      </a>
+      <a href="../Assets/E6_leger/Manuel_Utilisation_PPLEGER.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Manuel d'utilisation
+      </a>
+      <a href="../Assets/E6_leger/MCD_UML_et_MLD.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        MCD, UML &amp; MLD
+      </a>
+      <a href="../Assets/E6_leger/PPLEGER_diagrame_gantts.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Diagramme de Gantt
+      </a>
+      <a href="../Assets/E6_leger/SLAM-Fiche-presentation-situation_Leger_.pdf" class="doc-link" target="_blank">
+        <span class="dl-icon">PDF</span>
+        Fiche E6 réalisation n°1
+      </a>
+      <a href="https://benji.formationsio.fr" class="doc-link" target="_blank">
+        <span class="dl-icon">WEB</span>
+        Site en ligne
+      </a>
+      <a href="https://github.com/benjamincrouzet?tab=repositories" class="doc-link" target="_blank">
+        <span class="dl-icon">GIT</span>
+        GitHub · Code source
+      </a>
+    </div>
+  </div>
+
+  <div class="reveal" style="margin-top:2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 
