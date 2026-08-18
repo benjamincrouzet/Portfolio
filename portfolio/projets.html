@@ -5,106 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — Projets</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ── Styles spécifiques à la page projets ── */
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-      gap: 1.5rem;
-    }
-
-    .project-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.75rem;
-      position: relative;
-      overflow: hidden;
-      transition: border-color 0.25s, transform 0.25s;
-    }
-
-    /* Barre colorée à gauche au hover */
-    .project-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 3px;
-      height: 100%;
-      background: var(--accent);
-      opacity: 0;
-      transition: opacity 0.25s;
-    }
-
-    .project-card:hover {
-      border-color: rgba(0,212,170,0.3);
-      transform: translateY(-2px);
-    }
-
-    .project-card:hover::before { opacity: 1; }
-
-    .project-type {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .project-card h3 {
-      font-family: var(--display);
-      font-size: 1.15rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.6rem;
-      letter-spacing: -0.01em;
-    }
-
-    .project-card p {
-      font-size: 0.9rem;
-      color: var(--muted);
-      line-height: 1.7;
-      margin-bottom: 1.25rem;
-    }
-
-    /* Stack de technologies */
-    .project-stack { display: flex; flex-wrap: wrap; gap: 0.4rem; }
-
-    .stack-tag {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      padding: 0.2rem 0.55rem;
-      background: var(--bg3);
-      border: 1px solid var(--border);
-      border-radius: 2px;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-    }
-
-    /* Lien optionnel en bas de carte */
-    .project-link {
-      display: inline-flex;
-      align-items: center;
-      gap: 0.4rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--accent);
-      text-decoration: none;
-      letter-spacing: 0.06em;
-      margin-top: 1rem;
-      opacity: 0.8;
-      transition: opacity 0.2s;
-    }
-
-    .project-link:hover { opacity: 1; }
-  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="./Assets/logo.png"></a>
+  <a href="index.html" class="nav-logo"><img src="./Assets/logo.png" alt="Logo Benjamin Crouzet"></a>
   <ul class="nav-links">
     <li><a href="index.html">accueil</a></li>
     <li><a href="projets.html">projets</a></li>
@@ -221,21 +126,6 @@
       </div>
       <a href="Projets/Projet_BTS_E6_lourd.html" class="project-link">→ Voir le projet</a>
     </div>
-
-    <!-- PROJET 7 -->
-    <!--<div class="project-card reveal">
-      <div class="project-type">Lab · Embarqué</div>
-      <h3>Serveur multimédia Raspberry Pi</h3>
-      <p>Mise en place d'un serveur multimédia sur Raspberry Pi — configuration réseau,
-      stockage et accès distant.</p>
-      <div class="project-stack">
-        <span class="stack-tag">Raspberry Pi</span>
-        <span class="stack-tag">Linux</span>
-        <span class="stack-tag">Plex</span>
-        <span class="stack-tag">NAS</span>
-      </div>
-      <a href="Projets/Serveur_multimedia_rassbery.html" class="project-link">→ Voir le projet</a>
-    </div>-->
 
     <!-- ── MODÈLE VIDE — copier ce bloc pour ajouter un projet ──
     <div class="project-card reveal">

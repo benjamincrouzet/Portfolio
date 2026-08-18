@@ -5,118 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — Accueil</title>
   <link rel="stylesheet" href="style.css">
-
-  <style>
-    /* ── Styles spécifiques à la page accueil ── */
-
-    #accueil {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      padding-top: 9rem;
-    }
-
-    .hero-label {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      margin-bottom: 1.5rem;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-    }
-
-    .hero-label::before {
-      content: '';
-      width: 2rem;
-      height: 1px;
-      background: var(--accent);
-      display: inline-block;
-    }
-
-    h1 {
-      font-family: var(--display);
-      font-size: clamp(3rem, 7vw, 6rem);
-      font-weight: 800;
-      line-height: 1.05;
-      letter-spacing: -0.02em;
-      color: #ffffff;
-      margin-bottom: 0.3rem;
-    }
-
-    .hero-sub {
-      font-family: var(--display);
-      font-size: clamp(1.5rem, 3vw, 2.5rem);
-      font-weight: 400;
-      color: var(--muted);
-      margin-bottom: 2rem;
-    }
-
-    .hero-sub span { color: var(--accent); font-weight: 600; }
-
-    .hero-bio {
-      max-width: 600px;
-      font-size: 1.05rem;
-      color: var(--muted);
-      line-height: 1.8;
-      margin-bottom: 2.5rem;
-    }
-
-    .hero-cta { display: flex; gap: 1rem; flex-wrap: wrap; }
-
-    /* ── Timeline parcours ── */
-    .xp-block {
-      display: flex;
-      gap: 2rem;
-      padding: 2rem 0;
-      border-bottom: 1px solid var(--border);
-      align-items: flex-start;
-    }
-
-    .xp-block:last-child { border-bottom: none; }
-
-    .xp-date {
-      font-family: var(--mono);
-      font-size: 0.75rem;
-      color: var(--accent);
-      min-width: 100px;
-      padding-top: 0.3rem;
-      letter-spacing: 0.05em;
-    }
-
-    .xp-content h3 {
-      font-family: var(--display);
-      font-size: 1rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.25rem;
-    }
-
-    .xp-org {
-      font-size: 0.85rem;
-      color: var(--accent);
-      margin-bottom: 0.5rem;
-    }
-
-    .xp-content p {
-      font-size: 0.875rem;
-      color: var(--muted);
-      line-height: 1.7;
-    }
-
-    @media (max-width: 700px) {
-      .xp-block { flex-direction: column; gap: 0.5rem; }
-      .xp-date { min-width: auto; }
-    }
-  </style>
 </head>
 <body>
 
 <nav>
-  <a href="index.html" class="nav-logo"><img src="./Assets/logo.png"></a>
+  <a href="index.html" class="nav-logo"><img src="./Assets/logo.png" alt="Logo Benjamin Crouzet"></a>
   <ul class="nav-links">
     <li><a href="index.html">accueil</a></li>
     <li><a href="projets.html">projets</a></li>
@@ -126,7 +19,7 @@
 
 <!-- ──────────── HERO ──────────── -->
 <section id="accueil" class="page">
-  <div class="hero-label">Jeune Diplomé disponible · Île-de-France</div>
+  <div class="hero-label">Jeune Diplomé du BTS (Bientôt Bachelor) disponible · Île-de-France</div>
   <h1>Benjamin<br>Crouzet</h1>
   <p class="hero-sub">Systèmes &amp; <span>Réseau</span></p>
   <p class="hero-bio">

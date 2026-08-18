@@ -5,158 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — Pipeline DevOps</title>
   <link rel="stylesheet" href="../style.css">
-
-  <style>
-    /* ── Styles spécifiques à cette page projet ── */
-
-    .project-intro {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.85;
-      margin-bottom: 4rem;
-    }
-
-    .section-block { margin-bottom: 4rem; }
-
-    .section-block h3 {
-      font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .section-block .block-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-block p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      max-width: 700px;
-    }
-
-    .section-block p + p { margin-top: 1rem; }
-
-    code {
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 0.88em;
-    }
-
-    /* ── Bloc screenshot ── */
-    .screenshot-block {
-      margin-top: 1.5rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .screenshot-block img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .screenshot-caption {
-      padding: 0.85rem 1.25rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .screenshot-caption::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .screenshots-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (max-width: 750px) {
-      .screenshots-row { grid-template-columns: 1fr; }
-    }
-
-    /* ── Cartes techniques ── */
-    .infra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .infra-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .infra-card .ic-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
-    }
-
-    .infra-card .ic-value {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-
-    .infra-card p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
-
-    /* ── Encadré ── */
-    .callout {
-      margin-top: 1.5rem;
-      border-left: 2px solid var(--accent);
-      background: var(--bg2);
-      padding: 1.25rem 1.5rem;
-      border-radius: 0 4px 4px 0;
-      max-width: 720px;
-    }
-
-    .callout .co-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .callout p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
-  </style>
 </head>
 <body>
 
 <nav>
-  <a href="../index.html" class="nav-logo"><img src="../Assets/logo.png" alt="BC"></a>
+  <a href="../index.html" class="nav-logo"><img src="../Assets/logo.png" alt="Logo Benjamin Crouzet"></a>
   <ul class="nav-links">
     <li><a href="../index.html">accueil</a></li>
     <li><a href="../projets.html">projets</a></li>
@@ -200,9 +53,9 @@
   <div class="section-block reveal">
     <div class="block-label">Architecture</div>
     <h3>Deux services orchestrés par Docker Compose</h3>
-    <p>L'application repose sur deux conteneurs. Un service <strong style="color:var(--text)">web</strong>
+    <p>L'application repose sur deux conteneurs. Un service <strong>web</strong>
     construit à partir d'une image Ubuntu 22.04 embarquant Nginx et Python 3, et un service
-    <strong style="color:var(--text)">base de données</strong> MariaDB 10.11. La table
+    <strong>base de données</strong> MariaDB 10.11. La table
     <code>equipements</code> stocke l'inventaire : nom, IP, rôle, statut, adresse MAC et méthode d'accès.
     Les identifiants de connexion sont injectés par variables d'environnement plutôt qu'écrits en dur
     dans le code.</p>
@@ -277,8 +130,8 @@
     <div class="block-label">Intégration continue</div>
     <h3>Pipeline Jenkins en deux étapes</h3>
     <p>Le Jenkinsfile décrit un pipeline volontairement court. L'étape
-    <strong style="color:var(--text)">Nettoyage</strong> arrête et supprime les conteneurs en cours via
-    <code>docker compose down</code>. L'étape <strong style="color:var(--text)">Déploiement</strong>
+    <strong>Nettoyage</strong> arrête et supprime les conteneurs en cours via
+    <code>docker compose down</code>. L'étape <strong>Déploiement</strong>
     reconstruit les images et relance les services avec <code>docker compose up -d --build</code>.
     À chaque push sur le dépôt, l'application est reconstruite et redéployée dans sa version la plus
     récente, sans intervention manuelle.</p>

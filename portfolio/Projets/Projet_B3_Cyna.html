@@ -5,219 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Benjamin Crouzet — Projet B3 Cyna</title>
   <link rel="stylesheet" href="../style.css">
-
-  <style>
-    /* ── Styles spécifiques à cette page projet ── */
-
-    .project-intro {
-      max-width: 720px;
-      color: var(--muted);
-      font-size: 1rem;
-      line-height: 1.85;
-      margin-bottom: 2rem;
-    }
-
-    .section-block { margin-bottom: 4rem; }
-
-    .section-block h3 {
-      font-family: var(--display);
-      font-size: 1.25rem;
-      font-weight: 600;
-      color: #fff;
-      margin-bottom: 0.5rem;
-      letter-spacing: -0.01em;
-    }
-
-    .section-block .block-label {
-      font-family: var(--mono);
-      font-size: 0.68rem;
-      color: var(--accent);
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      margin-bottom: 0.75rem;
-    }
-
-    .section-block p {
-      color: var(--muted);
-      font-size: 0.95rem;
-      line-height: 1.8;
-      max-width: 700px;
-    }
-
-    .section-block p + p { margin-top: 1rem; }
-
-    code {
-      color: var(--accent);
-      font-family: var(--mono);
-      font-size: 0.88em;
-    }
-
-    /* ── Bloc screenshot ── */
-    .screenshot-block {
-      margin-top: 1.5rem;
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      overflow: hidden;
-    }
-
-    .screenshot-block img {
-      width: 100%;
-      display: block;
-      border-bottom: 1px solid var(--border);
-    }
-
-    .screenshot-caption {
-      padding: 0.85rem 1.25rem;
-      font-family: var(--mono);
-      font-size: 0.72rem;
-      color: var(--muted);
-      letter-spacing: 0.05em;
-      display: flex;
-      align-items: center;
-      gap: 0.75rem;
-      line-height: 1.6;
-    }
-
-    .screenshot-caption::before {
-      content: '';
-      width: 6px;
-      height: 6px;
-      border-radius: 50%;
-      background: var(--accent);
-      flex-shrink: 0;
-    }
-
-    .screenshots-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    @media (max-width: 750px) {
-      .screenshots-row { grid-template-columns: 1fr; }
-    }
-
-    /* ── Cartes ── */
-    .infra-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-      gap: 1rem;
-      margin-top: 1.5rem;
-    }
-
-    .infra-card {
-      background: var(--bg2);
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      padding: 1.25rem 1.5rem;
-    }
-
-    .infra-card .ic-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.4rem;
-    }
-
-    .infra-card .ic-value {
-      font-family: var(--mono);
-      font-size: 0.85rem;
-      color: var(--text);
-    }
-
-    .infra-card p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
-
-    /* ── Tableau ── */
-    .table-wrap {
-      margin-top: 1.5rem;
-      overflow-x: auto;
-      border: 1px solid var(--border);
-      border-radius: 4px;
-      background: var(--bg2);
-    }
-
-    table.data {
-      width: 100%;
-      border-collapse: collapse;
-      font-size: 0.82rem;
-    }
-
-    table.data th {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      color: var(--accent);
-      text-align: left;
-      padding: 0.85rem 1.1rem;
-      border-bottom: 1px solid var(--border);
-      white-space: nowrap;
-    }
-
-    table.data td {
-      padding: 0.7rem 1.1rem;
-      color: var(--muted);
-      border-bottom: 1px solid var(--border);
-      vertical-align: top;
-    }
-
-    table.data tr:last-child td { border-bottom: none; }
-    table.data td.mono { font-family: var(--mono); color: var(--text); white-space: nowrap; }
-
-    /* ── Encadré ── */
-    .callout {
-      margin-top: 1.5rem;
-      border-left: 2px solid var(--accent);
-      background: var(--bg2);
-      padding: 1.25rem 1.5rem;
-      border-radius: 0 4px 4px 0;
-      max-width: 760px;
-    }
-
-    .callout .co-label {
-      font-family: var(--mono);
-      font-size: 0.65rem;
-      color: var(--accent);
-      text-transform: uppercase;
-      letter-spacing: 0.1em;
-      margin-bottom: 0.5rem;
-    }
-
-    .callout p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
-    .callout p + p { margin-top: 0.8rem; }
-    .callout.warn { border-left-color: #e0a33e; }
-    .callout.warn .co-label { color: #e0a33e; }
-
-    ul.clean {
-      list-style: none;
-      margin-top: 1rem;
-      max-width: 700px;
-    }
-
-    ul.clean li {
-      color: var(--muted);
-      font-size: 0.92rem;
-      line-height: 1.8;
-      padding-left: 1.2rem;
-      position: relative;
-    }
-
-    ul.clean li::before {
-      content: '·';
-      position: absolute;
-      left: 0.2rem;
-      color: var(--accent);
-    }
-  </style>
 </head>
 <body>
 
 <nav>
-  <a href="../index.html" class="nav-logo"><img src="../Assets/logo.png" alt="BC"></a>
+  <a href="../index.html" class="nav-logo"><img src="../Assets/logo.png" alt="Logo Benjamin Crouzet"></a>
   <ul class="nav-links">
     <li><a href="../index.html">accueil</a></li>
     <li><a href="../projets.html">projets</a></li>
@@ -255,9 +47,9 @@
 
   <div class="callout reveal">
     <div class="co-label">Projet de groupe — mon périmètre</div>
-    <p>Ce projet a été mené <strong style="color:var(--text)">à quatre</strong>, chaque membre portant
+    <p>Ce projet a été mené <strong>à quatre</strong>, chaque membre portant
     un pôle : sécurité, DevOps, administration des postes, et infrastructure. J'ai tenu le
-    <strong style="color:var(--text)">rôle infrastructure</strong> : virtualisation, réseau des deux
+    <strong>rôle infrastructure</strong> : virtualisation, réseau des deux
     sites, segmentation, cloud hybride, annuaire, sauvegarde et plan de reprise. Tout ce qui est
     présenté ci-dessous relève de ce périmètre.</p>
     <p>C'est aussi un rôle en amont de la chaîne : les trois autres pôles avaient besoin de mes machines
@@ -271,10 +63,10 @@
   <div class="section-block reveal" style="margin-top:4rem">
     <div class="block-label">Architecture</div>
     <h3>Cible dimensionnée, maquette réduite</h3>
-    <p>Deux niveaux à ne pas confondre. L'architecture <strong style="color:var(--text)">cible</strong>
+    <p>Deux niveaux à ne pas confondre. L'architecture <strong>cible</strong>
     proposée au client repose sur trois hôtes physiques en cluster avec une marge permettant de perdre
     un hôte sans interruption, un stockage partagé et un SOC redondé. La
-    <strong style="color:var(--text)">maquette</strong> qui la valide tourne sur un unique portable
+    <strong>maquette</strong> qui la valide tourne sur un unique portable
     équipé d'un Ryzen AI 9 365 et de dix processeurs logiques, sous Hyper-V. Elle ne prouve pas la haute
     disponibilité — elle n'a qu'un hôte — mais elle valide les mécanismes : segmentation, routage
     inter-zones, tunnels chiffrés, annuaire multi-sites et sauvegarde.</p>
@@ -518,14 +310,14 @@
     que tout fonctionne : un jury attentif regarde les règles, pas seulement le schéma.</p>
 
     <ul class="clean">
-      <li><strong style="color:var(--text)">Le filtrage n'est pas appliqué.</strong> La segmentation
+      <li><strong>Le filtrage n'est pas appliqué.</strong> La segmentation
       existe et le routage inter-zones fonctionne, mais chaque interface porte encore une règle unique
       et permissive, posée pour débloquer les autres pôles pendant la construction. L'architecture a la
       forme d'un réseau segmenté et le comportement d'un réseau plat.</li>
-      <li><strong style="color:var(--text)">Aucun test de restauration chronométré.</strong> J'annonce
+      <li><strong>Aucun test de restauration chronométré.</strong> J'annonce
       des objectifs de reprise sans jamais avoir mesuré une restauration réelle. C'est la faiblesse que
       je trouve la plus gênante, parce qu'elle ne dépend que de moi.</li>
-      <li><strong style="color:var(--text)">Écart entre maquette et cible.</strong> Aucune bascule
+      <li><strong>Écart entre maquette et cible.</strong> Aucune bascule
       d'hôte ni règle d'anti-affinité ne peut être démontrée sur un hôte unique : la réponse à
       l'exigence de continuité repose sur un raisonnement, pas sur une preuve.</li>
     </ul>
