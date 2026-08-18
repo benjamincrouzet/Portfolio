@@ -3,8 +3,155 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benjamin Crouzet — DevOps</title>
+  <title>Benjamin Crouzet — Pipeline DevOps</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ── Styles spécifiques à cette page projet ── */
+
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 4rem;
+    }
+
+    .section-block { margin-bottom: 4rem; }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-block .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-block p + p { margin-top: 1rem; }
+
+    code {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.88em;
+    }
+
+    /* ── Bloc screenshot ── */
+    .screenshot-block {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .screenshot-block img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-caption {
+      padding: 0.85rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .screenshot-caption::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 750px) {
+      .screenshots-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Cartes techniques ── */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .infra-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .infra-card .ic-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .infra-card .ic-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .infra-card p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* ── Encadré ── */
+    .callout {
+      margin-top: 1.5rem;
+      border-left: 2px solid var(--accent);
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+      max-width: 720px;
+    }
+
+    .callout .co-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .callout p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+  </style>
 </head>
 <body>
 
@@ -19,44 +166,228 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
-    <h2>DevOps</h2>
+    <h2>Pipeline DevOps — supervision de parc</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Automatisation · CI/CD</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">Linux</span>
-    <span class="tag accent">Bash</span>
-    <span class="tag accent">Git</span>
+    <span class="tag accent">Docker</span>
+    <span class="tag accent">Docker Compose</span>
+    <span class="tag accent">Jenkins</span>
+    <span class="tag accent">GitLab</span>
+    <span class="tag accent">Python 3</span>
+    <span class="tag">MariaDB 10.11</span>
+    <span class="tag">Nginx</span>
+    <span class="tag">Ubuntu 22.04</span>
+    <span class="tag">cron</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Projet d'automatisation et de déploiement continu.</p>
+  <p class="project-intro reveal">
+    Projet de recherche et développement mené pendant mon alternance au Pôle de Santé du Plateau.
+    L'objectif de départ était simple : disposer d'un outil qui affiche en temps réel l'état des
+    équipements réseau de la clinique. La mise en œuvre m'a conduit à construire une chaîne
+    d'intégration continue complète — dépôt GitLab, build Docker, pipeline Jenkins — autour d'une
+    petite application Python qui interroge une base MariaDB et teste la disponibilité de chaque
+    équipement par ping. Le projet est resté au stade de preuve de concept, pour une raison
+    d'exploitation que j'explique en fin de page.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
+  <!-- ────────────────────────────────────────────
+       1. ARCHITECTURE
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Architecture</div>
+    <h3>Deux services orchestrés par Docker Compose</h3>
+    <p>L'application repose sur deux conteneurs. Un service <strong style="color:var(--text)">web</strong>
+    construit à partir d'une image Ubuntu 22.04 embarquant Nginx et Python 3, et un service
+    <strong style="color:var(--text)">base de données</strong> MariaDB 10.11. La table
+    <code>equipements</code> stocke l'inventaire : nom, IP, rôle, statut, adresse MAC et méthode d'accès.
+    Les identifiants de connexion sont injectés par variables d'environnement plutôt qu'écrits en dur
+    dans le code.</p>
 
-    <h3>Objectifs</h3>
-    <p>...</p>
+    <div class="infra-grid">
+      <div class="infra-card">
+        <div class="ic-label">Service web</div>
+        <div class="ic-value">mon-serveur-ubuntu</div>
+        <p>Ubuntu 22.04 · Nginx · Python 3 · ports 8081 et 8082</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Base de données</div>
+        <div class="ic-value">ma-base-donnees</div>
+        <p>MariaDB 10.11 · volume persistant db_data</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Dépôt</div>
+        <div class="ic-value">learngitlab-project</div>
+        <p>GitLab · branche main</p>
+      </div>
+      <div class="infra-card">
+        <div class="ic-label">Intégration continue</div>
+        <div class="ic-value">Jenkinsfile</div>
+        <p>2 étapes : Nettoyage puis Déploiement</p>
+      </div>
+    </div>
 
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+    <div class="screenshot-block">
+      <img src="../Assets/DevOps/gitlab_repo.png" alt="Dépôt GitLab learngitlab-project avec Dockerfile, Jenkinsfile, docker-compose.yml, entrypoint.sh, index.html et inventaire.py">
+      <div class="screenshot-caption">
+        Dépôt GitLab learngitlab-project — Dockerfile, Jenkinsfile, docker-compose.yml, entrypoint.sh, index.html et inventaire.py
+      </div>
+    </div>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ────────────────────────────────────────────
+       2. CONTENEURISATION
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Conteneurisation</div>
+    <h3>Dockerfile et docker-compose</h3>
+    <p>Le Dockerfile part d'une image <code>ubuntu:22.04</code>, installe Nginx, Python 3,
+    <code>python3-mysqldb</code> et <code>iputils-ping</code>, copie les deux scripts et définit
+    <code>entrypoint.sh</code> comme point d'entrée. Le fichier de composition déclare les deux services,
+    la dépendance du web vers la base, les ports publiés et le volume de persistance.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/dockerfile.png" alt="Dockerfile : image Ubuntu 22.04, installation Nginx, Python 3, python3-mysqldb et iputils-ping">
+        <div class="screenshot-caption">Dockerfile — image de base, dépendances, point d'entrée</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/docker_compose.png" alt="docker-compose.yml : service web sur les ports 8081 et 8082, service db MariaDB 10.11 avec volume db_data">
+        <div class="screenshot-caption">docker-compose.yml — service web (8081/8082) et MariaDB 10.11</div>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem">Le script <code>entrypoint.sh</code> résout un problème classique du
+    conteneur : lancer deux processus. Il démarre le script Python en arrière-plan et laisse Nginx au
+    premier plan, ce qui maintient le conteneur vivant.</p>
+
+    <div class="screenshot-block">
+      <img src="../Assets/DevOps/entrypoint.png" alt="entrypoint.sh : lancement de inventaire.py en arrière-plan puis nginx en avant-plan">
+      <div class="screenshot-caption">entrypoint.sh — inventaire.py en tâche de fond, Nginx au premier plan</div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       3. CI/CD
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Intégration continue</div>
+    <h3>Pipeline Jenkins en deux étapes</h3>
+    <p>Le Jenkinsfile décrit un pipeline volontairement court. L'étape
+    <strong style="color:var(--text)">Nettoyage</strong> arrête et supprime les conteneurs en cours via
+    <code>docker compose down</code>. L'étape <strong style="color:var(--text)">Déploiement</strong>
+    reconstruit les images et relance les services avec <code>docker compose up -d --build</code>.
+    À chaque push sur le dépôt, l'application est reconstruite et redéployée dans sa version la plus
+    récente, sans intervention manuelle.</p>
+
+    <div class="screenshot-block">
+      <img src="../Assets/DevOps/jenkinsfile.png" alt="Jenkinsfile : pipeline avec les étapes Nettoyage (docker compose down) et Déploiement (docker compose up -d --build)">
+      <div class="screenshot-caption">Jenkinsfile — étapes Nettoyage et Déploiement</div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       4. APPLICATION
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Développement</div>
+    <h3>inventaire.py — la boucle de supervision</h3>
+    <p>Le script se connecte à MariaDB, lit la table <code>equipements</code>, exécute un
+    <code>ping -c 1 -W 1</code> sur chaque adresse et en déduit le statut. Il génère ensuite la page
+    <code>/var/www/html/index.html</code> servie par Nginx, avec un badge vert « En ligne » ou rouge
+    « Hors ligne » selon le code retour. La boucle se répète toutes les cinq secondes, ce qui donne un
+    rafraîchissement quasi temps réel sans planificateur externe.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/inventaire_py_1.png" alt="inventaire.py : connexion MySQLdb avec identifiants en variables d'environnement et requête SELECT">
+        <div class="screenshot-caption">Connexion à la base et lecture de l'inventaire</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/inventaire_py_2.png" alt="inventaire.py : ping par subprocess, calcul du statut, génération du HTML et écriture dans /var/www/html/index.html">
+        <div class="screenshot-caption">Ping, calcul du statut et génération de la page HTML</div>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem">Côté données, cinq équipements représentatifs ont servi de jeu de test :
+    le pare-feu FortiGate, un switch de cœur, les deux conteneurs Docker et le poste hôte.</p>
+
+    <div class="screenshot-block">
+      <img src="../Assets/DevOps/mariadb_equipements.png" alt="Requête SELECT * FROM equipements dans MariaDB : cinq équipements avec nom, IP, rôle, statut, MAC et accès">
+      <div class="screenshot-caption">
+        MariaDB — table equipements : FortiGate, Switch-IT, site web Docker, CLI Docker et poste hôte
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       5. RÉSULTAT
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Résultat</div>
+    <h3>L'interface de supervision</h3>
+    <p>Le rendu final est accessible sur <code>localhost:8081</code>. Le tableau liste chaque équipement
+    avec son adresse IP, son adresse MAC, son rôle, son mode d'accès et son statut calculé au moment de
+    l'affichage. C'est un outil de supervision léger, entièrement automatisé et extensible : ajouter un
+    équipement se résume à une ligne en base.</p>
+
+    <div class="screenshot-block">
+      <img src="../Assets/DevOps/interface_web.png" alt="Interface web Inventaire de l'infrastructure en temps réel : tableau des équipements avec statut En ligne">
+      <div class="screenshot-caption">
+        Interface « Inventaire de l'infrastructure en temps réel » — statuts calculés par ping
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       6. EXPLOITATION
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Exploitation</div>
+    <h3>Sauvegarde planifiée</h3>
+    <p>Une tâche cron exécute chaque nuit à 2 h un script <code>sauvegarde.sh</code> qui archive le
+    projet et le contenu de la base. Le service <code>cron</code> a été vérifié actif et ses exécutions
+    tracées dans le journal système.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/crontab.png" alt="crontab -l : tâche 0 2 * * * lançant sauvegarde.sh">
+        <div class="screenshot-caption">crontab — sauvegarde quotidienne à 02h00</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/DevOps/cron_service.png" alt="systemctl status cron : service actif depuis plus d'un jour, exécutions tracées">
+        <div class="screenshot-caption">Service cron actif et exécutions journalisées</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       7. BILAN
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Bilan</div>
+    <h3>Pourquoi ce projet n'est pas passé en production</h3>
+    <p>La chaîne fonctionne, mais elle n'a pas été mise en production, et c'est une décision assumée.
+    Maintenir Docker Compose, Jenkins et GitLab au quotidien — mises à jour d'images, pannes de pipeline,
+    supervision des conteneurs — demande un temps d'exploitation qu'une équipe informatique de trois
+    personnes ne peut pas prélever sur la disponibilité des applications médicales.</p>
+
+    <div class="callout">
+      <div class="co-label">Ce que j'en retiens</div>
+      <p>Une solution qui fonctionne et une solution qui se maintient sont deux choses différentes.
+      J'ai conçu la chaîne complète avant de me demander qui l'exploiterait, alors que cette question
+      aurait dû orienter les choix techniques dès le cadrage — et m'aurait sans doute conduit vers une
+      solution packagée de type Zabbix ou Centreon plutôt que vers un développement sur mesure.
+      L'autre enseignement est de méthode : l'observabilité se conçoit en même temps que
+      l'infrastructure, pas après.</p>
+    </div>
+  </div>
+
+  <!-- ── Retour ── -->
+  <div class="reveal" style="margin-top: 2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 

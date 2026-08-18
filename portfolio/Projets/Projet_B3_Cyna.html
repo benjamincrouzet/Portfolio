@@ -3,8 +3,216 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Benjamin Crouzet — Projet B3 — Cyna</title>
+  <title>Benjamin Crouzet — Projet B3 Cyna</title>
   <link rel="stylesheet" href="../style.css">
+
+  <style>
+    /* ── Styles spécifiques à cette page projet ── */
+
+    .project-intro {
+      max-width: 720px;
+      color: var(--muted);
+      font-size: 1rem;
+      line-height: 1.85;
+      margin-bottom: 2rem;
+    }
+
+    .section-block { margin-bottom: 4rem; }
+
+    .section-block h3 {
+      font-family: var(--display);
+      font-size: 1.25rem;
+      font-weight: 600;
+      color: #fff;
+      margin-bottom: 0.5rem;
+      letter-spacing: -0.01em;
+    }
+
+    .section-block .block-label {
+      font-family: var(--mono);
+      font-size: 0.68rem;
+      color: var(--accent);
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 0.75rem;
+    }
+
+    .section-block p {
+      color: var(--muted);
+      font-size: 0.95rem;
+      line-height: 1.8;
+      max-width: 700px;
+    }
+
+    .section-block p + p { margin-top: 1rem; }
+
+    code {
+      color: var(--accent);
+      font-family: var(--mono);
+      font-size: 0.88em;
+    }
+
+    /* ── Bloc screenshot ── */
+    .screenshot-block {
+      margin-top: 1.5rem;
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    .screenshot-block img {
+      width: 100%;
+      display: block;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .screenshot-caption {
+      padding: 0.85rem 1.25rem;
+      font-family: var(--mono);
+      font-size: 0.72rem;
+      color: var(--muted);
+      letter-spacing: 0.05em;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      line-height: 1.6;
+    }
+
+    .screenshot-caption::before {
+      content: '';
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    .screenshots-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    @media (max-width: 750px) {
+      .screenshots-row { grid-template-columns: 1fr; }
+    }
+
+    /* ── Cartes ── */
+    .infra-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1rem;
+      margin-top: 1.5rem;
+    }
+
+    .infra-card {
+      background: var(--bg2);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      padding: 1.25rem 1.5rem;
+    }
+
+    .infra-card .ic-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.4rem;
+    }
+
+    .infra-card .ic-value {
+      font-family: var(--mono);
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+
+    .infra-card p { font-size: 0.8rem; color: var(--muted); margin-top: 0.25rem; }
+
+    /* ── Tableau ── */
+    .table-wrap {
+      margin-top: 1.5rem;
+      overflow-x: auto;
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      background: var(--bg2);
+    }
+
+    table.data {
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 0.82rem;
+    }
+
+    table.data th {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--accent);
+      text-align: left;
+      padding: 0.85rem 1.1rem;
+      border-bottom: 1px solid var(--border);
+      white-space: nowrap;
+    }
+
+    table.data td {
+      padding: 0.7rem 1.1rem;
+      color: var(--muted);
+      border-bottom: 1px solid var(--border);
+      vertical-align: top;
+    }
+
+    table.data tr:last-child td { border-bottom: none; }
+    table.data td.mono { font-family: var(--mono); color: var(--text); white-space: nowrap; }
+
+    /* ── Encadré ── */
+    .callout {
+      margin-top: 1.5rem;
+      border-left: 2px solid var(--accent);
+      background: var(--bg2);
+      padding: 1.25rem 1.5rem;
+      border-radius: 0 4px 4px 0;
+      max-width: 760px;
+    }
+
+    .callout .co-label {
+      font-family: var(--mono);
+      font-size: 0.65rem;
+      color: var(--accent);
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      margin-bottom: 0.5rem;
+    }
+
+    .callout p { font-size: 0.9rem; color: var(--muted); line-height: 1.8; }
+    .callout p + p { margin-top: 0.8rem; }
+    .callout.warn { border-left-color: #e0a33e; }
+    .callout.warn .co-label { color: #e0a33e; }
+
+    ul.clean {
+      list-style: none;
+      margin-top: 1rem;
+      max-width: 700px;
+    }
+
+    ul.clean li {
+      color: var(--muted);
+      font-size: 0.92rem;
+      line-height: 1.8;
+      padding-left: 1.2rem;
+      position: relative;
+    }
+
+    ul.clean li::before {
+      content: '·';
+      position: absolute;
+      left: 0.2rem;
+      color: var(--accent);
+    }
+  </style>
 </head>
 <body>
 
@@ -19,46 +227,330 @@
 
 <main class="page">
 
-  <!-- ── EN-TÊTE DU PROJET ── -->
+  <!-- ── EN-TÊTE ── -->
   <div class="section-header reveal">
     <span class="section-num">projet</span>
     <h2>Projet B3 — Cyna</h2>
   </div>
 
-  <div class="project-meta reveal">
-    <span class="project-type">Projet fil rouge Bachelor</span>
-  </div>
-
-  <!-- ── STACK ── -->
   <div class="tags reveal">
-    <span class="tag accent">Azure</span>
     <span class="tag accent">Hyper-V</span>
-    <span class="tag accent">Intune</span>
-    <span class="tag accent">Ansible</span>
-    <span class="tag accent">Terraform</span>
+    <span class="tag accent">pfSense 2.7.2</span>
+    <span class="tag accent">IPsec / IKEv2</span>
+    <span class="tag accent">Azure</span>
+    <span class="tag accent">Windows Server</span>
+    <span class="tag">Active Directory</span>
+    <span class="tag">Veeam</span>
+    <span class="tag">Terraform</span>
+    <span class="tag">Ansible</span>
+    <span class="tag">Prometheus / Grafana</span>
   </div>
 
-  <!-- ── DESCRIPTION ── -->
-  <!-- Remplace ce texte par le contenu détaillé du projet -->
-  <div class="project-detail reveal">
-    <p>Projet fil rouge Bachelor CPI RES — domaine infrastructure. Cloud hybride, virtualisation, administration centralisée.</p>
+  <p class="project-intro reveal">
+    Projet fil rouge du Bachelor CPI RES : concevoir et démontrer le système d'information d'un
+    éditeur de cybersécurité qui regroupe ses 215 collaborateurs sur un nouveau siège à Genève,
+    avec une filiale à Paris et un SOC exploité en continu. Le rendu comprend un document de cadrage,
+    un document d'architecture technique, la documentation d'exploitation et une maquette de validation.
+  </p>
 
-    <!-- Exemple de structure à compléter :
-    <h3>Contexte</h3>
-    <p>...</p>
-
-    <h3>Objectifs</h3>
-    <p>...</p>
-
-    <h3>Réalisation</h3>
-    <p>...</p>
-
-    <h3>Résultats</h3>
-    <p>...</p>
-    -->
+  <div class="callout reveal">
+    <div class="co-label">Projet de groupe — mon périmètre</div>
+    <p>Ce projet a été mené <strong style="color:var(--text)">à quatre</strong>, chaque membre portant
+    un pôle : sécurité, DevOps, administration des postes, et infrastructure. J'ai tenu le
+    <strong style="color:var(--text)">rôle infrastructure</strong> : virtualisation, réseau des deux
+    sites, segmentation, cloud hybride, annuaire, sauvegarde et plan de reprise. Tout ce qui est
+    présenté ci-dessous relève de ce périmètre.</p>
+    <p>C'est aussi un rôle en amont de la chaîne : les trois autres pôles avaient besoin de mes machines
+    et de mon réseau pour produire leurs propres preuves — le SIEM, le code de provisionnement, la VDI.
+    C'est la contrainte qui a le plus structuré ma façon de travailler sur ce projet.</p>
   </div>
 
-  <div class="reveal" style="margin-top: 3rem;">
+  <!-- ────────────────────────────────────────────
+       1. ARCHITECTURE
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal" style="margin-top:4rem">
+    <div class="block-label">Architecture</div>
+    <h3>Cible dimensionnée, maquette réduite</h3>
+    <p>Deux niveaux à ne pas confondre. L'architecture <strong style="color:var(--text)">cible</strong>
+    proposée au client repose sur trois hôtes physiques en cluster avec une marge permettant de perdre
+    un hôte sans interruption, un stockage partagé et un SOC redondé. La
+    <strong style="color:var(--text)">maquette</strong> qui la valide tourne sur un unique portable
+    équipé d'un Ryzen AI 9 365 et de dix processeurs logiques, sous Hyper-V. Elle ne prouve pas la haute
+    disponibilité — elle n'a qu'un hôte — mais elle valide les mécanismes : segmentation, routage
+    inter-zones, tunnels chiffrés, annuaire multi-sites et sauvegarde.</p>
+
+    <p>Le schéma ci-dessous est la référence de tout le dossier : les trois emplacements (siège de
+    Genève, filiale de Paris, extension Azure), les liens chiffrés et le plan d'adressage tel que
+    déployé.</p>
+
+    <div class="screenshot-block">
+      <img src="../Assets/CYNA/schema_hybride.png" alt="Schéma d'architecture hybride : siège de Genève, filiale de Paris, extension Azure, liens IPsec et plan d'adressage">
+      <div class="screenshot-caption">
+        Architecture hybride et plan d'adressage — Genève, Paris et l'extension Azure
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       2. PLATEFORME
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Plateforme de validation</div>
+    <h3>Sept machines virtuelles sous Hyper-V</h3>
+    <p>La maquette simule deux sites interconnectés et une extension cloud. Le principe appliqué est
+    qu'une machine porte un rôle et un seul, avec une exception assumée sur le serveur applicatif qui
+    regroupe la console de sauvegarde et l'administration centralisée, faute de mémoire disponible.</p>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>Machine</th><th>Rôle</th><th>Adresse</th><th>Système</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">pfsense-geneve</td><td>Pare-feu et routeur du siège, 9 interfaces</td><td class="mono">192.168.10.254</td><td>pfSense 2.7.2 / FreeBSD 14</td></tr>
+          <tr><td class="mono">pfsense-paris</td><td>Pare-feu et routeur de la filiale</td><td class="mono">192.168.20.254</td><td>pfSense 2.7.2 / FreeBSD 14</td></tr>
+          <tr><td class="mono">CYNA-GVA-AD01</td><td>Contrôleur de domaine cyna.lab, DNS, DHCP</td><td class="mono">192.168.10.10</td><td>Windows Server</td></tr>
+          <tr><td class="mono">CYNA-PAR-AD01</td><td>Contrôleur de domaine du site de Paris</td><td class="mono">192.168.20.11</td><td>Windows Server</td></tr>
+          <tr><td class="mono">CYNA-GVA-APP01</td><td>Serveur applicatif, console Veeam, Windows Admin Center</td><td class="mono">192.168.10.20</td><td>Windows Server</td></tr>
+          <tr><td class="mono">Wazuh</td><td>SIEM, nœud maître du cluster (pôle sécurité)</td><td class="mono">192.168.10.30</td><td>Ubuntu / Wazuh</td></tr>
+          <tr><td class="mono">VM-CYNA-CLOUD</td><td>Cible de test de l'extension cloud</td><td class="mono">10.10.1.x</td><td>Azure Standard B2ats v2</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="screenshot-block">
+      <img src="../Assets/CYNA/pfsense_geneve_dashboard.png" alt="Tableau de bord pfSense 2.7.2 du site de Genève sur machine virtuelle Hyper-V">
+      <div class="screenshot-caption">
+        Tableau de bord du pare-feu de Genève — pfSense 2.7.2 sur VM Hyper-V, administration en 192.168.10.254
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       3. SEGMENTATION
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Réseau</div>
+    <h3>Segmentation en neuf zones</h3>
+    <p>C'est la partie de la maquette la plus fidèlement transposable à la cible : les zones et leurs
+    relations ne dépendent pas du nombre d'hôtes physiques. Le pare-feu de Genève porte neuf interfaces
+    distinctes, chacune rattachée à son propre commutateur virtuel, avec un découpage en /27 sur la
+    maquette et un plan en /24 sur la cible.</p>
+
+    <div class="table-wrap">
+      <table class="data">
+        <thead>
+          <tr><th>Interface</th><th>Zone</th><th>Réseau maquette</th><th>Contenu</th></tr>
+        </thead>
+        <tbody>
+          <tr><td class="mono">WAN</td><td>Internet</td><td class="mono">derrière box FAI</td><td>Sortie opérateur</td></tr>
+          <tr><td class="mono">LAN</td><td>Socle</td><td class="mono">192.168.10.0/27</td><td>Administration du pare-feu</td></tr>
+          <tr><td class="mono">SERVEURS</td><td>Back End</td><td class="mono">192.168.10.0/27</td><td>Annuaire, fichiers, trésorerie</td></tr>
+          <tr><td class="mono">SOC</td><td>Sécurité</td><td class="mono">192.168.10.32/27</td><td>Serveurs Wazuh, postes analystes</td></tr>
+          <tr><td class="mono">USERS</td><td>Utilisateurs</td><td class="mono">192.168.10.64/27</td><td>Postes, clients légers, VDI</td></tr>
+          <tr><td class="mono">ADMIN</td><td>Administration</td><td class="mono">192.168.10.96/27</td><td>Consoles, hôtes, équipements</td></tr>
+          <tr><td class="mono">WIFIGUEST</td><td>Invités</td><td class="mono">192.168.10.128/27</td><td>Wi-Fi visiteurs, isolé</td></tr>
+          <tr><td class="mono">CLOUD</td><td>Interconnexion</td><td class="mono">192.168.10.160/27</td><td>Terminaison du lien Azure</td></tr>
+          <tr><td class="mono">LINK_PARIS</td><td>Inter-sites</td><td class="mono">10.0.0.0/30</td><td>Point à point vers la filiale</td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/pfsense_geneve_interfaces.png" alt="Les neuf interfaces du pare-feu de Genève : WAN, LAN, SERVEURS, SOC, USERS, ADMIN, WIFIGUEST, CLOUD et LINK_PARIS">
+        <div class="screenshot-caption">Les neuf interfaces du pare-feu de Genève</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/pfsense_paris_dashboard.png" alt="Tableau de bord du pare-feu de Paris : cinq interfaces actives dont LINK_GENEVE en 10.0.0.2">
+        <div class="screenshot-caption">Pare-feu de Paris — découpage simplifié, LINK_GENEVE en 10.0.0.2</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       4. INTERCONNEXION
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Interconnexion</div>
+    <h3>Tunnel IPsec Genève – Paris</h3>
+    <p>Le lien entre les deux sites est un tunnel IKEv2 authentifié par clé partagée, chiffré en
+    AES 128, intégrité SHA-256, groupe Diffie-Hellman 14, avec une phase 2 en ESP entre
+    <code>192.168.10.0/24</code> et <code>192.168.20.0/24</code>. Il est opérationnel et validé de bout
+    en bout depuis le contrôleur de domaine de Paris vers celui de Genève, avec des temps de réponse de
+    l'ordre de deux millisecondes.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/ipsec_tunnel_paris.png" alt="Tunnel IPsec Paris-Genève : IKEv2, AES 128, SHA-256, DH 14">
+        <div class="screenshot-caption">Tunnel Paris – Genève : IKEv2, AES 128, SHA-256, DH groupe 14</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/ipsec_geneve_config.png" alt="Configuration du tunnel IPsec côté Genève">
+        <div class="screenshot-caption">Configuration du tunnel côté Genève</div>
+      </div>
+    </div>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/ping_paris_geneve.png" alt="Validation de bout en bout : ping du contrôleur de domaine de Paris vers celui de Genève">
+        <div class="screenshot-caption">Validation de bout en bout — DC Paris vers DC Genève</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/sortie_internet.png" alt="Sortie internet depuis une machine interne à travers le pare-feu : résolution de noms et routage fonctionnels">
+        <div class="screenshot-caption">Sortie internet depuis une machine interne — routage et DNS</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       5. CLOUD
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Cloud hybride</div>
+    <h3>Extension Azure en région Suisse Nord</h3>
+    <p>Le choix de la région n'est pas cosmétique : c'est lui qui maintient la résidence des données en
+    territoire suisse et qui rend tenable le raisonnement de conformité, le siège relevant de la LPD et
+    la filiale française du RGPD. Le réseau virtuel <code>Vnet-Cyna</code> porte un sous-réseau
+    applicatif en <code>10.10.1.0/24</code> et le <code>GatewaySubnet</code> imposé par Azure. Une
+    machine Linux de test y a été provisionnée, maintenue à l'état libéré entre deux séances parce que
+    l'abonnement étudiant utilisé consomme du crédit en permanence dès qu'une passerelle est active.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/azure_vnet.png" alt="Réseau virtuel Vnet-Cyna en région Suisse Nord avec sous-réseau applicatif et GatewaySubnet">
+        <div class="screenshot-caption">Vnet-Cyna — Suisse Nord, sous-réseau applicatif et GatewaySubnet</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/azure_vm.png" alt="Machine VM-CYNA-CLOUD, Standard B2ats v2, région Suisse Nord">
+        <div class="screenshot-caption">VM-CYNA-CLOUD — Standard B2ats v2, libérée entre deux tests</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       6. ÉCHEC
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Diagnostic</div>
+    <h3>Le tunnel vers Azure n'a jamais monté</h3>
+    <p>C'est le principal échec technique du projet, et je le documente entièrement parce que le
+    diagnostic produit une exigence utile pour l'architecture cible. La configuration côté pare-feu est
+    identique à celle du tunnel inter-sites qui, lui, fonctionne. Côté Azure, la connexion reste à
+    l'état « Non connecté » ; côté pare-feu, la phase 1 ne se négocie jamais.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/azure_tunnel_nonconnecte.png" alt="Passerelle Azure : la connexion Tunnel-Geneve-Azure reste à l'état Non connecté">
+        <div class="screenshot-caption">Côté Azure — connexion à l'état « Non connecté »</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/pfsense_ipsec_ko.png" alt="Côté pare-feu : la phase 1 du tunnel vers Azure ne se négocie pas">
+        <div class="screenshot-caption">Côté pare-feu — la phase 1 ne se négocie jamais</div>
+      </div>
+    </div>
+
+    <p style="margin-top:1.5rem">La cause est une double traduction d'adresses. La maquette est raccordée
+    à internet derrière une box opérateur : le pare-feu ne connaît que son adresse privée
+    <code>10.110.46.117</code> sur son interface WAN, alors que l'adresse publique réellement vue par
+    Azure est tout autre. Le service de résolution de nom dynamique mis en place le démontre — il
+    restitue l'adresse publique du moment, différente de celle portée par l'interface. Ce mécanisme
+    absorbe la variabilité de l'adresse, il ne corrige pas la cause : la passerelle Azure attend un pair
+    joignable directement sur l'adresse déclarée.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/dyndns_wan.png" alt="Client de nom dynamique actif sur l'interface WAN du pare-feu">
+        <div class="screenshot-caption">Client DynDNS actif sur l'interface WAN</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/double_nat.png" alt="L'adresse publique vue de l'extérieur diffère de celle portée par l'interface WAN : double NAT démontré">
+        <div class="screenshot-caption">Preuve du double NAT — adresse publique ≠ adresse d'interface</div>
+      </div>
+    </div>
+
+    <div class="callout warn">
+      <div class="co-label">Conséquence pour l'architecture cible</div>
+      <p>Le raccordement du site de production au cloud suppose une adresse publique fixe et une
+      terminaison de tunnel sans traduction d'adresses. C'est une exigence à porter au contrat
+      opérateur, au même titre que le débit et le délai de rétablissement. Le lien doit par ailleurs
+      être doublé sur deux accès distincts, avec bascule automatique.</p>
+      <p>Ce que je retiens de ma propre gestion : j'ai traité en dernier la brique dont j'étais le moins
+      sûr et dont deux autres pôles dépendaient. L'ordre correct est l'inverse — attaquer en premier ce
+      qui cumule le plus d'incertitude et de dépendances en aval, parce que c'est le seul échec qui ne
+      peut pas être absorbé tard.</p>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       7. SAUVEGARDE
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Sauvegarde et reprise</div>
+    <h3>Veeam sur les machines critiques</h3>
+    <p>Les objectifs de reprise sont différenciés par criticité : 15 minutes de perte maximale et
+    1 heure de remise en service pour l'annuaire et le SOC, 4 heures pour la bureautique et les
+    fichiers, avec application de la règle 3-2-1 et une troisième copie externalisée dans Azure. En
+    maquette, la sauvegarde du contrôleur de domaine de Genève est opérationnelle, avec traitement
+    compatible applications — sans cette option, sauvegarder un contrôleur de domaine revient à
+    sauvegarder un état incohérent.</p>
+
+    <div class="screenshots-row">
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/veeam_job.png" alt="Tâche de sauvegarde Veeam du contrôleur de domaine de Genève">
+        <div class="screenshot-caption">Tâche de sauvegarde du contrôleur de domaine de Genève</div>
+      </div>
+      <div class="screenshot-block">
+        <img src="../Assets/CYNA/veeam_resultat.png" alt="Résultat d'exécution de la tâche de sauvegarde Veeam">
+        <div class="screenshot-caption">Résultat d'exécution — tâche terminée avec point de restauration</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ────────────────────────────────────────────
+       8. DETTE
+  ──────────────────────────────────────────── -->
+  <div class="section-block reveal">
+    <div class="block-label">Honnêteté technique</div>
+    <h3>La dette que je documente</h3>
+    <p>Le dossier rendu inscrit explicitement ce qui n'a pas été fait, plutôt que de le contourner par
+    une formulation vague. C'est un choix de groupe et je le crois meilleur qu'un dossier qui prétend
+    que tout fonctionne : un jury attentif regarde les règles, pas seulement le schéma.</p>
+
+    <ul class="clean">
+      <li><strong style="color:var(--text)">Le filtrage n'est pas appliqué.</strong> La segmentation
+      existe et le routage inter-zones fonctionne, mais chaque interface porte encore une règle unique
+      et permissive, posée pour débloquer les autres pôles pendant la construction. L'architecture a la
+      forme d'un réseau segmenté et le comportement d'un réseau plat.</li>
+      <li><strong style="color:var(--text)">Aucun test de restauration chronométré.</strong> J'annonce
+      des objectifs de reprise sans jamais avoir mesuré une restauration réelle. C'est la faiblesse que
+      je trouve la plus gênante, parce qu'elle ne dépend que de moi.</li>
+      <li><strong style="color:var(--text)">Écart entre maquette et cible.</strong> Aucune bascule
+      d'hôte ni règle d'anti-affinité ne peut être démontrée sur un hôte unique : la réponse à
+      l'exigence de continuité repose sur un raisonnement, pas sur une preuve.</li>
+    </ul>
+
+    <div class="screenshot-block">
+      <img src="../Assets/CYNA/regle_permissive_serveurs.png" alt="Interface SERVEURS : une règle unique autorisant tout trafic issu du sous-réseau vers n'importe quelle destination">
+      <div class="screenshot-caption">
+        Interface SERVEURS — règle permissive unique : la segmentation est faite, le filtrage ne l'est pas
+      </div>
+    </div>
+
+    <div class="callout">
+      <div class="co-label">Ce que le projet m'a appris</div>
+      <p>Mes vraies erreurs sur ce projet sont des erreurs de séquencement et de communication, pas des
+      erreurs techniques. Le tunnel inter-sites est correct, la segmentation est correcte, le
+      dimensionnement est défendable — ils sont simplement arrivés bien après la fenêtre que nous leur
+      avions réservée, et trois personnes attendaient dessus.</p>
+      <p>J'en retiens deux règles concrètes : livrer à date fixe même incomplet, avec un état écrit de
+      ce qui marche et de ce qui ne marche pas ; et décrire l'infrastructure sous forme de code dès le
+      départ, parce que ce qui n'existe que sur une machine n'existe pas.</p>
+    </div>
+  </div>
+
+  <!-- ── Retour ── -->
+  <div class="reveal" style="margin-top: 2rem;">
     <a href="../projets.html" class="btn btn-ghost">← Retour aux projets</a>
   </div>
 
